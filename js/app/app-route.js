@@ -9,7 +9,12 @@
                 views:  {                  
                     content: {
                         templateUrl: 'html/hereiam/hereiam.html',
-                        controller: 'HereIAmController as vm'							 
+                        controller: 'HereIAmController as vm',
+                        resolve : {
+                            promiseObj : function (HereIAmService){
+                                return HereIAmService.init();
+                            }
+                        }					 
                     }                  
                 }                             
             });
