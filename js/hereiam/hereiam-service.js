@@ -26,7 +26,7 @@
         }
 
         function loadRoute() {
-            var url = " https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php";
+            var url = "https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php";
             $log.info("[hereiam-service.js] - appel de loadRoute sur " + url);            
             var promise = $http.get(url);
             promise.then(function (data) {            
