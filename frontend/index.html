@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PROBTP - TEST</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/probtp-bootstrap-theme.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- necessaire pour faire du modal selon https://stackoverflow.com/questions/38469717/bootstrap-3-modal-not-working-on-button-click -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- angularjs 1.4.4 -->
+    <script src="js/external/angular/angular.min.js"></script>
+    <script src="js/external/angular/angular-messages.min.js"></script>
+    <!-- ui-router -->
+    <script src="js/external/angular-ui-router/angular-ui-router.js"></script>
+    <!-- module app -->
+    <script src="js/app/app-module.js"></script>
+    <script src="js/app/app-constants.js"></script>
+    <script src="js/app/app-route.js"></script>
+    <script src="js/app/app-service.js"></script>
+    <!-- module test -->
+    <script src="js/test/test-module.js"></script>
+    <script src="js/test/test-controller.js"></script>
+    <script src="js/test/test-service.js"></script>
+       <!-- module hereiam -->
+       <script src="js/hereiam/hereiam-module.js"></script>
+       <script src="js/hereiam/hereiam-controller.js"></script>
+       <script src="js/hereiam/hereiam-service.js"></script>
+</head>
+<body ng-app="app">
+    <div ui-view="content"></div>
+</body>
+</html>

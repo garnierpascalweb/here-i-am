@@ -1,0 +1,82 @@
+/build/
+/deploy/
+/benchpress-build/
+.DS_Store
+gen_docs.disable
+test.disable
+regression/temp*.html
+performance/temp*.html
+.idea/workspace.xml
+*~
+*.swp
+angular.js.tmproj
+node_modules/
+node_modules/**
+angular.xcodeproj
+.firebase/
+.idea
+*.iml
+.agignore
+.lvimrc
+libpeerconnection.log
+npm-debug.log
+/tmp/
+.vscode
+*.log
+*.stackdump
+
+/build/
+/deploy/
+/benchpress-build/
+.DS_Store
+gen_docs.disable
+test.disable
+regression/temp*.html
+performance/temp*.html
+.idea/workspace.xml
+*~
+*.swp
+angular.js.tmproj
+node_modules/
+angular.xcodeproj
+.idea
+*.iml
+.agignore
+.lvimrc
+libpeerconnection.log
+npm-debug.log
+/tmp/
+.vscode
+*.log
+*.stackdump
+# Dossier lib de bibliotheques non incluses dans l'ear
+lib
+##########################
+#Pas de fichiers de logs
+*.log*
+##########################
+#Pas de livrables binaires
+**/*.ear
+**/*.war
+**/*.jar
+**/*.class
+##########################
+#Pas de repertoire de build standard du socle/maven
+**/*/target
+**/*/target-*/
+##########################
+#Generé par mvn eclipse:eclipse
+bin
+.settings
+.classpath
+.project
+##########################
+#status.jsp generee par socle/maven
+status.jsp
+##########################
+#Manifests generes automatiquement...sauf celui de l'ejb ?
+[mM][aA][nN][iI][fF][eE][sS][tT].[mM][fF]
+
+**/node-http-server-config.js
+node-http-server-config.js
+app-mock.js
