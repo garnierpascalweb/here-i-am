@@ -11,7 +11,7 @@
 
         function getRoute() {
             var deferred = $q.defer();
-            var promise = $http.get("http://garnierpascalweb.free.fr/api/hereiam.php");
+            var promise = $http.get("https://garnierpascalweb.free.fr/api/hereiam.php");
             promise.success(function (data) {
                 deferred.resolve(data);
             }).error(deferred.reject);
@@ -25,7 +25,7 @@
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     var data = lat + ";" + lng;
-                    var promise = $http.post("http://garnierpascalweb.free.fr/api/hereiam.php", data);
+                    var promise = $http.post("https://garnierpascalweb.free.fr/api/hereiam.php", data);
                     promise.success(function (data) {
                         deferred.resolve(data);
                     }).error(deferred.reject);
