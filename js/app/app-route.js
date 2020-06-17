@@ -3,22 +3,32 @@
 		// configuration dun Service de la librairie angular-ui-router
         .config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider) {
             $stateProvider            
-            .state('hereiam', {
+            .state('show', {
                 //parent: 'depot-parent',
-                url: '/hereiam/',
+                url: '/show/',
                 views:  {                  
                     content: {
-                        templateUrl: 'html/hereiam/hereiam.html',
-                        controller: 'HereIAmController as vm',
+                        templateUrl: 'html/hereiam/show.html',
+                        controller: 'ShowController as vm',
                         resolve : {
-                            promiseObj : function (HereIAmService){
-                                return HereIAmService.init();
+                            promiseObj : function (ShowService){
+                                return ShowService.init();
                             }
                         }					 
                     }                  
                 }                             
+            }).state('mark', {
+                //parent: 'depot-parent',
+                url: '/mark/',
+                views:  {                  
+                    content: {
+                        templateUrl: 'html/hereiam/mark.html',
+                        controller: 'MarkController as vm'                         
+                    }                  
+                }                             
             });
+        
             // route par dfaut, si / alors redirection vers /recherche
-            $urlRouterProvider.otherwise('/hereiam/');
+            $urlRouterProvider.otherwise('/mark/');
         }]);		
 }(angular));

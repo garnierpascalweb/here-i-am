@@ -21,8 +21,7 @@ switch ($requested_method){
                 $json .= "},";
             }
         }
-        $json .= "]";    
-        
+        $json .= "]";            
         $rep = $json;
         break;
     }
@@ -31,10 +30,23 @@ switch ($requested_method){
         $tokens = explode(";", $data);
         $lat = $tokens[0];
         $lng = $tokens[1];
-        $currentTime = date("Y-m-d-H-i");
-        $query= "insert into hereiam values ('".$lat."', '".$lng."', '".$currentTime."')";   
+        // $currentTime = date("Y-m-d-H-i");
+        $currentTime = date("U");
+        $query= "insert into garnierpascalweb.hereiam values ('".$lat."', '".$lng."', '".$currentTime."')";   
         $success = mysql_query($query, $LINK);    
-        $rep = $success;
+        $rep = "Coordonnees ".$lat." ".$lng." ajoutees ok si 1 ".$success;
+        break;
+    }
+    case "DELETE" : {
+        $data = file_get_contents("php://input");
+        $tokens = explode(";", $data);
+        $lat = $tokens[0];
+        $lng = $tokens[1];
+        $currentTime = date("Y-m-d-H-i");
+        $query= "delete from  garnierpascalweb.hereiam";   
+        $success = mysql_query($query, $LINK);    
+        $rep = "Trash de tous les points ok si 1 ".$success;
+        break;
     }
 }
 header("Access-Control-Allow-Origin: *");  

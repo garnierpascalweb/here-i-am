@@ -1,3 +1,3 @@
 (function(ng) {'use strict'; //NOSONAR
-ng.module('hereiam', []);
+ng.module('mark', []);
 })(angular);
