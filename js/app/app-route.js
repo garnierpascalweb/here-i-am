@@ -29,6 +29,6 @@
             });
         
             // route par dfaut, si / alors redirection vers /recherche
-            $urlRouterProvider.otherwise('/mark/');
+            $urlRouterProvider.otherwise('/show/');
         }]);		
 }(angular));
