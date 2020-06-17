@@ -26,7 +26,7 @@
         }
 
         function loadRoute() {
-            var url = "http://garnierpascalweb.free.fr/api/hereiam.php";
+            var url = " https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php";
             $log.info("[hereiam-service.js] - appel de loadRoute sur " + url);            
             var promise = $http.get(url);
             promise.then(function (data) {            
@@ -54,7 +54,7 @@
                     var data = lat + ";" + lng;
                     $log.info("[hereiam-service.js] - appel du backend");      
                     $log.info("[hereiam-service.js] - data " + data);      
-                    var promise = $http.post("http://garnierpascalweb.free.fr/api/hereiam.php", data);
+                    var promise = $http.post("https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php", data);
                     promise.success(function (data) {
                         deferred.resolve(data);
                     }).error(deferred.reject);
