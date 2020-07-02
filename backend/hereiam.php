@@ -2,9 +2,10 @@
 include_once($_SERVER['DOCUMENT_ROOT']."/conf/connect.php");
 $requested_method = $_SERVER["REQUEST_METHOD"];
 $rep = "";
-$httprc = "";
+
 $http200 = "HTTP/1.1 200 OK";
 $http500 = "HTTP/1.1 500 Internal Server Error";
+$httprc = $http200;
 
 switch ($requested_method){
     case "GET" : {
