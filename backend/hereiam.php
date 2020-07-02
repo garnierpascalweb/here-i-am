@@ -71,6 +71,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET,POST,PUT,PATCH,OPTIONS,DELETE");  
 header("Access-Control-Allow-Headers: Content-Type, Date, Server");  
 header($httprc);
+// Pour le GET, echo REP
 echo $rep;
 ?>
 
