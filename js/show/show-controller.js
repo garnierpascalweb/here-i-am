@@ -5,9 +5,13 @@
     ShowController.$inject = ['$log', '$filter', 'ShowService'];
     function ShowController($log, $filter, ShowService) {
         var vm = this;
-        
-        vm.message = "Chargement en cours...";
+
+        vm.message = {};
+        vm.message.class = "alert alert-info";
+        vm.message.value = "";    
         vm.onLoad = onLoad;
+
+        vm.getReadableDate = getReadableDate;
 
 
         function onLoad() {
@@ -23,6 +27,8 @@
                     center: [lastPoint.lat, lastPoint.lng],
                     zoom: 13
                 });
+                var lastPointReadableDate = getReadableDate(lastPoint.timepoint);
+
                 //var mymap = L.map('mapid').setView([currentPoint.lat, currentPoint.lng], 13);
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
@@ -34,17 +40,22 @@
                     zoomOffset: -1
                 }).addTo(mymap);
                 angular.forEach(data, function (row) {
-                    var marker = L.marker([row.lat, row.lng]).addTo(mymap);
-                    var mytime = new Date(row.timepoint*1000);
-                    var readable = $filter('date')(mytime, 'dd/MM/yyyy HH:mm');
+                    var marker = L.marker([row.lat, row.lng]).addTo(mymap);                    
+                    var readable = getReadableDate(row.timepoint);
                     marker.bindPopup("<b>Here I Was at " + readable + "</b><br>" + row.lat + "-" + row.lng).openPopup();
                     $log.info("[show-controller.js] - ajout du marker " + row.lat + "-" + row.lng);
                 });
-                vm.message = size + " points enregistrés";
+                vm.message.value = size + " traces de passage détectées : dernière en date le " + lastPointReadableDate;
             } else {
-                vm.message = "Pas de points enregistrés";
+                vm.message.value = "Pas de points enregistrés";
             }
             $log.info("[show-controller.js] - fin appel de onLoad");
+        }
+
+        function getReadableDate(timepoint){
+            var mytime = new Date(timepoint*1000);
+            var readable = $filter('date')(mytime, 'dd/MM/yyyy HH:mm');
+            return readable;
         }
         onLoad();
     }
