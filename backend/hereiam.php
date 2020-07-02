@@ -2,6 +2,9 @@
 include_once($_SERVER['DOCUMENT_ROOT']."/conf/connect.php");
 $requested_method = $_SERVER["REQUEST_METHOD"];
 $rep = "";
+$httprc = "";
+$http200 = "HTTP/1.1 200 OK";
+$http500 = "HTTP/1.1 500 Internal Server Error";
 
 switch ($requested_method){
     case "GET" : {
@@ -23,6 +26,7 @@ switch ($requested_method){
         }
         $json .= "]";            
         $rep = $json;
+        $httprc = $http200;
         break;
     }
     case "POST" : {
@@ -34,9 +38,13 @@ switch ($requested_method){
         $currentTime = date("U");
         $query= "insert into garnierpascalweb.hereiam values ('".$lat."', '".$lng."', '".$currentTime."')";   
         $success = mysql_query($query, $LINK); 
-         
-        $rep = "Coordonnees ".$lat." ".$lng." ajoutees ok si 1 ".$success;
-
+        if ($success){
+            $rep = "Coordonnees ".$lat." ".$lng." envoyées sur le backend!";
+            $httprc = $http200;
+        } else {
+            $rep = "Probleme lors de l'envoi des données sur le backend";
+            $httprc = $http500;
+        }
         break;
     }
     case "DELETE" : {
@@ -47,13 +55,21 @@ switch ($requested_method){
         $currentTime = date("Y-m-d-H-i");
         $query= "delete from  garnierpascalweb.hereiam";   
         $success = mysql_query($query, $LINK);    
-        $rep = "Trash de tous les points ok si 1 ".$success;
+        if ($success){
+            $rep = "Suppression de tous les points de la carte effectuée";
+            $httprc = $http200;
+        } else {
+            $rep = "Probleme lors de la suppression de tous les points de la carte";
+            $httprc = $http500;
+        }
+
         break;
     }
 }
 header("Access-Control-Allow-Origin: *");  
 header("Access-Control-Allow-Methods: GET,POST,PUT,PATCH,OPTIONS,DELETE");  
 header("Access-Control-Allow-Headers: Content-Type, Date, Server");  
+header($httprc);
 echo $rep;
 ?>
 

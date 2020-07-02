@@ -5,6 +5,7 @@
     ShowController.$inject = ['$log', '$filter', 'ShowService'];
     function ShowController($log, $filter, ShowService) {
         var vm = this;
+        
         vm.message = "Chargement en cours...";
         vm.onLoad = onLoad;
 
