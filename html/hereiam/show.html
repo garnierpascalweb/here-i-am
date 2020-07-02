@@ -1,7 +1,9 @@
 <div class="container">
-    <div class="alert alert-info">
-        {{vm.message}}
+    <div class="page-header">
+        <h3>Here I Am</h3>
     </div>
-    <div id="mapid" style="width: 1200px; height: 800px;">
+    <div class="{{vm.message.class}}">
+        <strong>{{vm.message.value}}</strong>
     </div>
+    <div id="mapid" style="width: 1200px; height: 800px;"></div>
 </div>

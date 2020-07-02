@@ -1,6 +1,9 @@
 <div class="container">
-    <div class="alert alert-info">
-        {{vm.message}}
+    <div class="page-header">
+        <h1>Tracer ma position</h1>
     </div>
-    <button type="button" class="btn btn-primary" ng-click="vm.setPosition()">Ajouter Position</button>    
+    <div class="{{vm.message.class}}">
+        <strong>{{vm.message.value}}</strong>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="vm.setPosition()">Cliquer sur ce bouton pour tracer sa Position</button>
 </div>

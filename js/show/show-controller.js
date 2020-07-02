@@ -16,8 +16,13 @@
 
             if (size > 0) {
                 $log.info("[show-controller.js] - " + size + " points identifies");
-                var currentPoint = data[size - 1];
-                var mymap = L.map('mapid').setView([currentPoint.lat, currentPoint.lng], 13);
+                var lastPoint = data[size - 1];
+                $log.info("[show-controller.js] - centre sur " + lastPoint.lat + " " + lastPoint.lng);
+                var mymap = L.map('mapid', {
+                    center: [lastPoint.lat, lastPoint.lng],
+                    zoom: 13
+                });
+                //var mymap = L.map('mapid').setView([currentPoint.lat, currentPoint.lng], 13);
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
                     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +

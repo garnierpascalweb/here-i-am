@@ -33,8 +33,10 @@ switch ($requested_method){
         // $currentTime = date("Y-m-d-H-i");
         $currentTime = date("U");
         $query= "insert into garnierpascalweb.hereiam values ('".$lat."', '".$lng."', '".$currentTime."')";   
-        $success = mysql_query($query, $LINK);    
+        $success = mysql_query($query, $LINK); 
+         
         $rep = "Coordonnees ".$lat." ".$lng." ajoutees ok si 1 ".$success;
+
         break;
     }
     case "DELETE" : {
