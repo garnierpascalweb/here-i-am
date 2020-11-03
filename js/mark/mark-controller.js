@@ -27,7 +27,7 @@
             var promise = MarkService.setPosition();
             vm.message.value="Appel en cours...";
             vm.message.class = "alert alert-warning";
-            vm.color = "#e17055";
+            vm.color = "#ffeaa7";
             promise.then(function (data) {
                 vm.message.value = data;
                 vm.message.class = "alert alert-success";
