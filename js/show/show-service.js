@@ -2,8 +2,8 @@
     'use strict'; //NOSONAR
     ng.module('show')
         .service('ShowService', ShowService);
-        ShowService.$inject = ['$log', '$q', '$http'];
-    function ShowService($log, $q, $http) {
+        ShowService.$inject = ['$log', '$q', '$http', 'MYAPI'];
+    function ShowService($log, $q, $http,MYAPI) {
         var service = {};
         service.route = [];
         service.init = init;
@@ -24,10 +24,8 @@
             return deferred.promise;
         }
 
-        function loadRoute() {
-            var url = "https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php";
-            $log.info("[show-service.js] - appel de loadRoute sur " + url);            
-            var promise = $http.get(url);
+        function loadRoute() {                       
+            var promise = $http.get(MYAPI);
             promise.then(function (data) {            
                 service.route = data.data;
                 $log.info("[show-service.js] - succes de loadRoute " + JSON.stringify(service.route));   

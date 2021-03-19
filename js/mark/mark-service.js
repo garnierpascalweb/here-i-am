@@ -2,8 +2,8 @@
     'use strict'; //NOSONAR
     ng.module('mark')
         .service('MarkService', MarkService);
-        MarkService.$inject = ['$log', '$q', '$http'];
-    function MarkService($log, $q, $http) {
+        MarkService.$inject = ['$log', '$q', '$http', 'MYAPI'];
+    function MarkService($log, $q, $http, MYAPI) {
         var service = {};            
         service.setPosition = setPosition;
         service.trash = trash;
@@ -19,7 +19,7 @@
                     var data = lat + ";" + lng;
                     $log.info("[mark-service.js] - appel du backend");      
                     $log.info("[mark-service.js] - data " + data);      
-                    var promise = $http.post("https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php", data);
+                    var promise = $http.post(MYAPI, data);
                     promise.success(function (data) {
                         deferred.resolve(data);
                         $log.info("[mark-service.js] - requete traitee avec succes ");    
@@ -35,7 +35,7 @@
         function trash(){
             $log.info("[mark-service.js] - appel de trash");
             var deferred = $q.defer();
-            var promise = $http.delete("https://cors-anywhere.herokuapp.com/http://garnierpascalweb.free.fr/api/hereiam.php");
+            var promise = $http.delete(MYAPI);
             promise.success(function (data) {
                 deferred.resolve(data);
             }).error(deferred.reject);

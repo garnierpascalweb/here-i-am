@@ -2,10 +2,10 @@
     'use strict'; //NOSONAR
     ng.module('show')
         .controller('ShowController', ShowController);
-    ShowController.$inject = ['$log', '$filter', 'ShowService'];
-    function ShowController($log, $filter, ShowService) {
+    ShowController.$inject = ['$log', '$filter', 'ShowService', 'VERSION'];
+    function ShowController($log, $filter, ShowService, VERSION) {
         var vm = this;
-
+        vm.version = VERSION;
         vm.message = {};
         vm.message.class = "alert alert-info";
         vm.message.value = "";    
