@@ -1,5 +1,7 @@
 <div class="container">
     <h1>Tracer la position</h1>
-    <div [class]="messageClass">{{messageText}}</div>
-    <button type="button" class="btn btn-info">Cliquer sur ce bouton pour tracer la position</button>
+    <div class="col-md-4 col-md-offset-4">
+    <div [ngClass]="messageClass">{{messageText}}</div>
+    <button type="button" class="btn btn-info" (click)="onClickButton()">Cliquer sur ce bouton pour tracer la position</button>
+    </div>
 </div>

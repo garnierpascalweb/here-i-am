@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MarkService } from '../services/mark.service';
 
 @Component({
   selector: 'app-mark',
@@ -9,7 +10,7 @@ export class MarkComponent {
   messageText: string;
   messageClass: string;
 
-  constructor(){
+  constructor(private markService : MarkService){
     this.messageText = 'Ton pere';
     this.messageClass = 'btn btn-info';
   }
@@ -22,6 +23,7 @@ export class MarkComponent {
     //console.log('')
     this.messageText = 'Envoi de la position en cours';
     this.messageClass = 'btn btn-warning';
+    this.markService.markPosition();
   }
 
 }

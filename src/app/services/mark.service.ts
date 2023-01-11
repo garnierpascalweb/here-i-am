@@ -14,6 +14,6 @@ export class MarkService {
      * @since 2.0.0
      */
     markPosition(){
-
+        console.log('markPosition appelle');
     }
 }
