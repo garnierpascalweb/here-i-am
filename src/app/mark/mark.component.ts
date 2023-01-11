@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./mark.component.scss']
 })
 export class MarkComponent {
+  messageText: string;
+  messageClass: string;
+
+  constructor(){
+    this.messageText = '';
+    this.messageClass = '';
+  }
 
 }
