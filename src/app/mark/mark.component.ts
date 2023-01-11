@@ -10,8 +10,18 @@ export class MarkComponent {
   messageClass: string;
 
   constructor(){
-    this.messageText = '';
-    this.messageClass = '';
+    this.messageText = 'Ton pere';
+    this.messageClass = 'btn btn-info';
+  }
+
+  /**
+   * Click sur le bouton
+   * @since 2.0.0
+   */
+  onClickButton() {
+    //console.log('')
+    this.messageText = 'Envoi de la position en cours';
+    this.messageClass = 'btn btn-warning';
   }
 
 }
