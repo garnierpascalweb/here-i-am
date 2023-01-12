@@ -19,6 +19,8 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    // https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
+    "strictPropertyInitialization": false,
     "lib": [
       "ES2022",
       "dom"
