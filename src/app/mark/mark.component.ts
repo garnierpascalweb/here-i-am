@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MarkService } from '../services/mark.service';
+import { MarkServiceResponse } from '../services/mark.service.response';
 
 @Component({
   selector: 'app-mark',
@@ -8,23 +9,26 @@ import { MarkService } from '../services/mark.service';
   styleUrls: ['./mark.component.scss']
 })
 export class MarkComponent implements OnInit {
-  messageText: string;
-  messageClass: string; 
+
+  response: MarkServiceResponse;  
   messageSubscription: Subscription;
 
   constructor(private markService: MarkService) {
-    this.messageText = 'Ton pere';
-    this.messageClass = 'btn btn-info';
+    this.response = new MarkServiceResponse();   
     this.messageSubscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.messageSubscription = this.markService.messageSubject.subscribe(
-      (message:string) => {
-        this.messageText = message;
+    this.messageSubscription = this.markService.responseSubject.subscribe(
+      (messageResponse:MarkServiceResponse) => {
+        this.response = messageResponse;
       }
     );
-    this.markService.emitMessageSubject();
+    this.markService.emitResponseSubject();
+  }
+
+  ngOnDestroy():void {
+    this.messageSubscription.unsubscribe();
   }
 
   /**
@@ -33,36 +37,34 @@ export class MarkComponent implements OnInit {
    */
   onClickButton() {
     //console.log('')
-    this.messageText = 'Envoi de la position en cours';
-    this.messageClass = 'btn btn-warning';
+    this.response.message = 'Envoi de la position en cours';   
     let geoLocOptions = {
       enabledHighAccruracy: true,
       maximumAge:10000,
       timeout:3000
     };
     // calcul de la position
-    if (navigator.geolocation) {
-      console.log('geoloc ok sur ton browser');
+    if (navigator.geolocation) {     
       navigator.geolocation.getCurrentPosition((position: GeolocationPosition): void => {  
         console.log('position vue');     
         if (position) {         
-          this.markService.markPosition(position);
+          this.markService.markPosition(position);          
         } else {
-          this.messageText = 'Impossible de calculer la position';
-          this.messageClass = 'btn btn-danger';
+          this.response.message = 'Impossible de calculer la position';
+          //this.response.response = 'btn btn-danger';
         }
       },
         (error: GeolocationPositionError) => { 
           console.log('erreur position');  
-          this.messageText = 'Erreur lors de la recuperation de la position';
-          this.messageClass = 'btn btn-danger';          
+          this.response.message = 'Erreur lors de la recuperation de la position';
+          //this.response.color = 'btn btn-danger';  
         }, geoLocOptions
       );
     } else {     
       console.log('geoloc pas ok sur ton browser');
-      this.messageText = 'La geolocalisation nest pas supportee';
-      this.messageClass = 'btn btn-danger';      
-    }   
+      this.response.message = 'La geolocalisation nest pas supportee';
+      //this.response.color = 'btn btn-danger';
+    }      
   }
 
   /**

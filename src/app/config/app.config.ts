@@ -1,0 +1,1 @@
+export const API_URI = 'https://garnierpascalweb.fr/app/here-i-am/api/hereiam.php';

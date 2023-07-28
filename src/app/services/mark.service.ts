@@ -1,6 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
+import { API_URI } from "../config/app.config";
+import { MarkServiceResponse } from "./mark.service.response";
+
+
 
 /**
  * Service Mark
@@ -9,16 +13,16 @@ import { Subject } from "rxjs";
 @Injectable()
 export class MarkService {
 
-    private message : string;
-    messageSubject = new Subject<string>();
+    response: MarkServiceResponse;  
+    responseSubject = new Subject<MarkServiceResponse>();
     
     constructor(private httpClient : HttpClient){
-
+        this.response = new MarkServiceResponse();
     }
 
-    emitMessageSubject(){
-        if(this.message)
-            this.messageSubject.next(this.message.slice());
+    emitResponseSubject(){
+        if(this.response)
+            this.responseSubject.next(this.response);            
     }
 
     /**
@@ -26,26 +30,55 @@ export class MarkService {
      * @since 2.0.0
      */
     markPosition(position: GeolocationPosition){
-        console.log('markPosition appelle');
-        let uri = 'http://localhost:4200';
-        let datas = '';
+        console.log('markPosition appelle');        
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        let alt = position.coords.altitude;
+        console.log('lat ' + lat);
+        console.log('lng ' + lng);
+        console.log('alt ' + alt);
+        let datas = lat + ";" + lng;
         let options = {
 
         }
 
-        this.httpClient.post(uri,datas,options)
+        this.httpClient.post(API_URI,datas,options)
         .subscribe({
             next: (response) => {
-                this.message = 'succes de lappel';  
-                this.emitMessageSubject();                              
+                console.log("appel de next") ;   
+                this.response.message = 'succes de lappel';  
+                this.response.status = 'ok';  
+                this.response.lat = lat;
+                this.response.lng = lng;
+                this.response.alt = alt;
+                this.response.marked=true;                               
             },
             error: (response) => {
-                this.message = 'echec de lappel'
-                this.emitMessageSubject();
+                console.log("appel de error") ;   
+                this.response.message = 'echec de lappel'
+                this.response.status = 'error';  
+                this.response.marked=false;               
             },
             complete: () => { 
-                this.emitMessageSubject();
+                console.log("appel de complete") ; 
+                this.emitResponseSubject();  
+                //setTimeout(this.clear(),5000);              
             } 
         });
+    }
+
+    /**
+     * @since 2.0.0
+     * Reinitialisation du Bean
+     */
+    clear(){
+        console.log('clear sur objet ' + this.response);
+        this.response.message = '';  
+        this.response.status = 'default';  
+        this.response.lat = 0.0;
+        this.response.lng = 0.0;
+        this.response.alt = 0.0;
+        this.response.marked=false;
+        this.emitResponseSubject();                         
     }
 }
