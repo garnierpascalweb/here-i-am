@@ -11,33 +11,34 @@ import { MarkServiceResponse } from '../services/mark.service.response';
 export class MarkComponent implements OnInit {
 
   response: MarkServiceResponse;  
-  messageSubscription: Subscription;
+  responseSubscription: Subscription;
 
   constructor(private markService: MarkService) {
     this.response = new MarkServiceResponse();   
-    this.messageSubscription = new Subscription();
+    this.responseSubscription = new Subscription();
   }
 
   ngOnInit(): void {
-    this.messageSubscription = this.markService.responseSubject.subscribe(
-      (messageResponse:MarkServiceResponse) => {
-        this.response = messageResponse;
+    this.responseSubscription = this.markService.responseSubject.subscribe(
+      (response:MarkServiceResponse) => {
+        this.response = response;
       }
     );
     this.markService.emitResponseSubject();
   }
 
   ngOnDestroy():void {
-    this.messageSubscription.unsubscribe();
+    this.responseSubscription.unsubscribe();
   }
 
   /**
    * Click sur le bouton
    * @since 2.0.0
    */
-  onClickButton() {
-    //console.log('')
-    this.response.message = 'Envoi de la position en cours';   
+  onClickButton() {   
+    this.response.message = 'Envoi de la position en cours';    
+    this.response.status = 'warning';
+    this.response.marked = false;
     let geoLocOptions = {
       enabledHighAccruracy: true,
       maximumAge:10000,
@@ -45,34 +46,23 @@ export class MarkComponent implements OnInit {
     };
     // calcul de la position
     if (navigator.geolocation) {     
-      navigator.geolocation.getCurrentPosition((position: GeolocationPosition): void => {  
-        console.log('position vue');     
+      navigator.geolocation.getCurrentPosition((position: GeolocationPosition): void => {         
         if (position) {         
           this.markService.markPosition(position);          
         } else {
-          this.response.message = 'Impossible de calculer la position';
+          this.response.message = 'Impossible de calculer la position';          
+          this.response.status = 'danger';
           //this.response.response = 'btn btn-danger';
         }
       },
-        (error: GeolocationPositionError) => { 
-          console.log('erreur position');  
-          this.response.message = 'Erreur lors de la recuperation de la position';
-          //this.response.color = 'btn btn-danger';  
+        (error: GeolocationPositionError) => {          
+          this.response.message = 'Erreur lors de la recuperation de la position';         
+          this.response.status = 'danger';
         }, geoLocOptions
       );
-    } else {     
-      console.log('geoloc pas ok sur ton browser');
-      this.response.message = 'La geolocalisation nest pas supportee';
-      //this.response.color = 'btn btn-danger';
+    } else {           
+      this.response.message = 'La geolocalisation nest pas supportee';      
+      this.response.status = 'warning';     
     }      
   }
-
-  /**
-   * Methode privee permettant de calculer la position
-   * @since 2.0.0
-   */
-  private getLocation() {
-    
-  }
-
 }

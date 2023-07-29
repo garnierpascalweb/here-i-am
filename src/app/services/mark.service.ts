@@ -4,8 +4,6 @@ import { Subject } from "rxjs";
 import { API_URI } from "../config/app.config";
 import { MarkServiceResponse } from "./mark.service.response";
 
-
-
 /**
  * Service Mark
  * @since 2.0.0
@@ -13,7 +11,7 @@ import { MarkServiceResponse } from "./mark.service.response";
 @Injectable()
 export class MarkService {
 
-    response: MarkServiceResponse;  
+    private response: MarkServiceResponse;  
     responseSubject = new Subject<MarkServiceResponse>();
     
     constructor(private httpClient : HttpClient){
@@ -33,19 +31,14 @@ export class MarkService {
         console.log('markPosition appelle');        
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
-        let alt = position.coords.altitude;
-        console.log('lat ' + lat);
-        console.log('lng ' + lng);
-        console.log('alt ' + alt);
+        //TODO altitude non interpretee
+        let alt = position.coords.altitude;       
         let datas = lat + ";" + lng;
-        let options = {
+        // mettre un timeout en 3e argument de post
 
-        }
-
-        this.httpClient.post(API_URI,datas,options)
+        this.httpClient.post(API_URI,datas)
         .subscribe({
-            next: (response) => {
-                console.log("appel de next") ;   
+            next: (response) => {                
                 this.response.message = 'succes de lappel';  
                 this.response.status = 'ok';  
                 this.response.lat = lat;
@@ -53,32 +46,26 @@ export class MarkService {
                 this.response.alt = alt;
                 this.response.marked=true;                               
             },
-            error: (response) => {
-                console.log("appel de error") ;   
+            error: (response) => {                
                 this.response.message = 'echec de lappel'
                 this.response.status = 'error';  
                 this.response.marked=false;               
             },
-            complete: () => { 
-                console.log("appel de complete") ; 
-                this.emitResponseSubject();  
-                //setTimeout(this.clear(),5000);              
+            complete: () => {                 
+                this.emitResponseSubject();
+                // apres 5 secondes, reinitialisation de lecran
+                setTimeout(
+                    () => {
+                        this.response.message = ''
+                        this.response.status = 'default';
+                        this.response.lat = 0.0;
+                        this.response.lng = 0.0;
+                        this.response.alt = 0.0; 
+                        this.response.marked=false;
+                        this.emitResponseSubject();            
+                    }, 5000
+                )
             } 
         });
-    }
-
-    /**
-     * @since 2.0.0
-     * Reinitialisation du Bean
-     */
-    clear(){
-        console.log('clear sur objet ' + this.response);
-        this.response.message = '';  
-        this.response.status = 'default';  
-        this.response.lat = 0.0;
-        this.response.lng = 0.0;
-        this.response.alt = 0.0;
-        this.response.marked=false;
-        this.emitResponseSubject();                         
-    }
+    }   
 }
