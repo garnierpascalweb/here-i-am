@@ -28,6 +28,7 @@ export class MapComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     console.log('appel onInit');
+    // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467
     (mapboxgl as any).accessToken = MAPBOX_ACCESS_TOKEN;
     this.map = new mapboxgl.Map({
       container: 'map',
