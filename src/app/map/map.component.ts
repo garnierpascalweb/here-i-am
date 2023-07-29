@@ -9,7 +9,9 @@ import { MAPBOX_ACCESS_TOKEN } from '../config/app.config';
 })
 
 /**
+ * Composant Map (la carte)
  * @since 1.1.0
+ * @see https://docs.mapbox.com/mapbox-gl-js/api/
  * @see https://medium.com/@timo.baehr/using-mapbox-in-angular-application-bc3b2b38592
  */
 export class MapComponent implements OnInit, OnDestroy {
