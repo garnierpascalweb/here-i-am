@@ -1,6 +1,5 @@
-
 /**
- * 
+ * Objet representant la reponse du service Mark
  */
 export class MarkServiceResponse {
     marked:boolean;
@@ -17,7 +16,4 @@ export class MarkServiceResponse {
         this.lng = 0;
         this.alt = 0;          
     }
-
-    
-
 }

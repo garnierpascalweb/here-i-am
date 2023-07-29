@@ -8,6 +8,7 @@ import { ShowComponent } from './show/show.component';
 import { MarkComponent } from './mark/mark.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MarkService } from './services/mark.service';
+import { ShowService } from './services/show.service';
 
 const appRoutes : Routes = [
   { path : 'show', component : ShowComponent },
@@ -26,6 +27,7 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
+    ShowService,
     MarkService
   ],
   bootstrap: [AppComponent]

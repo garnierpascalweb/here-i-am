@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MarkService } from '../services/mark.service';
 import { MarkServiceResponse } from '../services/mark.service.response';
@@ -8,7 +8,7 @@ import { MarkServiceResponse } from '../services/mark.service.response';
   templateUrl: './mark.component.html',
   styleUrls: ['./mark.component.scss']
 })
-export class MarkComponent implements OnInit {
+export class MarkComponent implements OnInit, OnDestroy {
 
   response: MarkServiceResponse;  
   responseSubscription: Subscription;
