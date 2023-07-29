@@ -25,6 +25,7 @@ export class MapComponent implements OnInit, OnDestroy {
    * @see https://docs.mapbox.com/mapbox-gl-js/example/simple-map/
    */
   ngOnInit(): void {
+    console.log('appel onInit');
     (mapboxgl as any).accessToken = MAPBOX_ACCESS_TOKEN;
     this.map = new mapboxgl.Map({
       container: 'map',
@@ -32,13 +33,14 @@ export class MapComponent implements OnInit, OnDestroy {
       zoom: 9,
       center: [4.07, 46.03]
     });
+    console.log('fin appel onInit');
     // Add map controls
-    /*
+    
     this.map.addControl(new mapboxgl.NavigationControl());
     const marker = new mapboxgl.Marker()
     .setLngLat([4.07, 46.03])
     .addTo(this.map);
-    */
+    
   }
 
   ngOnDestroy(): void {
