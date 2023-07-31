@@ -1,1 +1,16 @@
-<p>point-list works!</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>Date</th>
+          <th>Commune</th>
+          <th>Coordonnées GPS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let point of response.datas.slice().reverse()">
+          <td>{{point.timepoint}}  {{ point.timepoint * 1000 | date: 'dd/MM/yyyy HH:mm' }} </td>
+          <td>{{point.codepostal}} {{point.commune}}</td>
+          <td>{{point.lat}}{{point.lng}}</td>
+        </tr>       
+      </tbody> 
+</table>

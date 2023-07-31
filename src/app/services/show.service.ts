@@ -26,10 +26,11 @@ export class ShowService {
 
     /**
      * @since 1.1.0
-     * Rend l'ensemble des points dans response.datas
+     * Rend l'ensemble des points dans response.datas (tableau)
+     * Rend aussi un message
      */
     showPositions(){
-        this.httpClient.get(API_URI)
+        this.httpClient.get<any[]>(API_URI)
         .subscribe({
             next: (response) => {                
                 this.response.datas = response;

@@ -7,7 +7,7 @@ import { Point } from "../model/point";
 export class ShowServiceResponse {
    points: Point[];
    message: string;
-   datas: object;
+   datas: any[];
 
    constructor() {
                 
