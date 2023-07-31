@@ -24,12 +24,12 @@ export class ShowComponent implements OnInit, OnDestroy {
         this.response = response;
       }
     );
-    this.showService.showPosition();
+    this.showService.showPositions();
     this.showService.emitResponseSubject();
   }
 
   ngOnDestroy(): void {
-    
+    this.responseSubscription.unsubscribe();
   }
 
 }

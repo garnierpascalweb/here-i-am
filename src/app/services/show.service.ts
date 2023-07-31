@@ -26,21 +26,21 @@ export class ShowService {
 
     /**
      * @since 1.1.0
+     * Rend l'ensemble des points dans response.datas
      */
-    showPosition(){
+    showPositions(){
         this.httpClient.get(API_URI)
         .subscribe({
             next: (response) => {                
-                 console.log("response est ");
-                 console.log(response);
-                 this.response.datas = response;
-                 this.emitResponseSubject();
+                this.response.datas = response;
+                this.response.message = "Chargement des données OK";            
             },
             error: (response) => {                
-                      
+                this.response.datas = response;
+                this.response.message = "Echec du chargement des données";          
             },
-            complete: () => {                 
-               
+            complete: () => {                               
+                this.emitResponseSubject();
             } 
         });
     }    
