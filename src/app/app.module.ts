@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MarkService } from './services/mark.service';
 import { ShowService } from './services/show.service';
 import { MapComponent } from './map/map.component';
+import { PointListComponent } from './point-list/point-list.component';
 
 const appRoutes : Routes = [
   { path : 'show', component : ShowComponent },
@@ -21,7 +22,8 @@ const appRoutes : Routes = [
     AppComponent,
     ShowComponent,
     MarkComponent,
-    MapComponent
+    MapComponent,
+    PointListComponent
   ],
   imports: [
     BrowserModule,    
