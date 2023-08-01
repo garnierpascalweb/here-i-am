@@ -1,6 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
+import { Subscription } from 'rxjs';
 import { MAPBOX_ACCESS_TOKEN } from '../config/app.config';
+import { ShowService } from '../services/show.service';
+import { ShowServiceResponse } from '../services/show.service.response';
 
 @Component({
   selector: 'app-map',
@@ -16,10 +20,14 @@ import { MAPBOX_ACCESS_TOKEN } from '../config/app.config';
  */
 export class MapComponent implements OnInit, OnDestroy {
   map: mapboxgl.Map;
-  
+  response: ShowServiceResponse;  
+  responseSubscription: Subscription;
+  datepipe: DatePipe; 
 
-  constructor() {
+
+  constructor(private showService : ShowService) {
     // this.style = 'mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j';
+    this.datepipe = new DatePipe('en-US');
   }
 
   /**
@@ -27,27 +35,42 @@ export class MapComponent implements OnInit, OnDestroy {
    * @see https://docs.mapbox.com/mapbox-gl-js/example/simple-map/
    */
   ngOnInit(): void {
-    console.log('appel onInit');
-    // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467
     (mapboxgl as any).accessToken = MAPBOX_ACCESS_TOKEN;
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      zoom: 9,
-      center: [4.07, 46.03]
-    });
-    console.log('fin appel onInit');
+    
+    this.responseSubscription = this.showService.responseSubject.subscribe(
+      (response: ShowServiceResponse) => {
+        this.response = response;
+        // Add all markers
+        if (this.response.datas) {
+          this.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v12',
+            zoom: 9,
+            center: [4.07, 46.03]
+          });
+          this.map.addControl(new mapboxgl.NavigationControl());
+          this.response.datas.forEach((point) => {
+            let formattedDate = this.datepipe.transform(point.timepoint*1000, 'dd/MM/YYYY HH:mm')
+            const marker = new mapboxgl.Marker()
+              .setLngLat([point.lng, point.lat])
+              .setPopup(new mapboxgl.Popup().setHTML("Le " + formattedDate + " sur la commune de " + point.codepostal + " " + point.commune + " (" + point.lat + " " + point.lng + ")"))
+              .addTo(this.map);
+          });
+        }
+      }
+    );
+
+    this.showService.showPositions();
+    this.showService.emitResponseSubject();
+
+    // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467
+   
     // Add map controls
-    
-    this.map.addControl(new mapboxgl.NavigationControl());
-    const marker = new mapboxgl.Marker()
-    .setLngLat([4.07, 46.03])
-    .addTo(this.map);
-    
+   
   }
 
   ngOnDestroy(): void {
-
+    this.responseSubscription.unsubscribe();
   }
 
 
