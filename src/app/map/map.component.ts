@@ -3,6 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { Subscription } from 'rxjs';
 import { MAPBOX_ACCESS_TOKEN } from '../config/app.config';
+import { CustomDatePipe } from '../pipe/customdatepipe';
+
 import { ShowService } from '../services/show.service';
 import { ShowServiceResponse } from '../services/show.service.response';
 
@@ -27,7 +29,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   constructor(private showService : ShowService) {
     // this.style = 'mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j';
-    this.datepipe = new DatePipe('en-US');
+    this.datepipe = new CustomDatePipe('en-US');
   }
 
   /**
@@ -51,7 +53,7 @@ export class MapComponent implements OnInit, OnDestroy {
           });
           this.map.addControl(new mapboxgl.NavigationControl());
           this.response.datas.forEach((point) => {
-            let formattedDate = this.datepipe.transform(point.timepoint*1000, 'dd/MM/YYYY HH:mm')
+            let formattedDate = this.datepipe.transform(point.timepoint);
             const marker = new mapboxgl.Marker()
               .setLngLat([point.lng, point.lat])
               .setPopup(new mapboxgl.Popup().setHTML("Le " + formattedDate + " sur la commune de " + point.codepostal + " " + point.commune + " (" + point.lat + " " + point.lng + ")"))
