@@ -24,8 +24,9 @@ export class ShowService {
     }
 
     emitResponseSubject(){
-        if(this.response)
+        if(this.response){
             this.responseSubject.next(this.response);            
+        }
     }
 
     /**
@@ -37,7 +38,8 @@ export class ShowService {
     showPositions(){
         this.httpClient.get<any[]>(API_URI)
         .subscribe({
-            next: (response) => {                
+            next: (response) => {  
+                console.log("[show.service.ts] response est " + response +" de type  " + typeof response);
                 this.response.datas = response.reverse();
                 let nbTraces = this.response.datas.length;
                 let lastPoint = this.response.datas[0];
@@ -47,9 +49,9 @@ export class ShowService {
                 this.response.message = nbTraces + " traces enregistrées - dernière en date le " + this.datepipe.transform(lastDate) + " a proximité de  " + lastCodePostal + "  " + lastCommune;    
                 this.emitResponseSubject();        
             },
-            error: (response) => {                
-                this.response.datas = response;
-                this.response.message = "Echec du chargement des données";          
+            error: (error) => {                
+                this.response.datas = [];
+                this.response.message = "Echec du chargement des données  " + error.message;                  
                 this.emitResponseSubject();
             },
             complete: () => {                               
