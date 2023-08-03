@@ -44,7 +44,7 @@ export class MapComponent implements OnInit, OnDestroy {
         this.response = response;
         // Add all markers
         if (this.response.datas) {
-          let lastPoint = response.datas.reverse()[0];
+          let lastPoint = response.datas[0];
           this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v12',

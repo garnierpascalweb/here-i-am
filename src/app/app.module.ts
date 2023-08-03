@@ -14,7 +14,10 @@ import { PointListComponent } from './point-list/point-list.component';
 
 const appRoutes : Routes = [
   { path : 'show', component : ShowComponent },
-  { path : 'mark', component : MarkComponent }
+  { path : 'mark', component : MarkComponent },
+  // path vide, path par defaut
+  { path : '', component : ShowComponent }
+  
 ] ;
 
 @NgModule({
