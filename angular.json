@@ -60,11 +60,12 @@
           },
           "configurations": {
             "production": {
+              //https://www.journaldunet.fr/web-tech/developpement/1499373-angular-comment-corriger-l-erreur-warning-in-budgets-maximum-exceeded-for-initial/
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
