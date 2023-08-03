@@ -1,4 +1,5 @@
 /build/
+/dist/
 /deploy/
 /benchpress-build/
 .DS_Store
