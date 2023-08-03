@@ -1,11 +1,11 @@
-import { Point } from "../model/point";
+import { MyPoint } from "../model/point";
 
 /**
  * @since 1.1.0
  * Objet représentant le réponse du service Show
  */
 export class ShowServiceResponse {
-   points: Point[];
+   points: MyPoint[];
    message: string;
    datas: any[];
 

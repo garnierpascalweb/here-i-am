@@ -2,7 +2,7 @@
  * @since 1.1.0
  * 
  */
-export class Point {
+export class MyPoint {
     lat: number;
     lng: number;
     commune: string|null;

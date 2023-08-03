@@ -1,8 +1,9 @@
 import { DatePipe } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { API_URI } from "../config/app.config";
+import { MyPoint } from "../model/point";
 import { CustomDatePipe } from "../pipe/customdatepipe";
 import { ShowServiceResponse } from "./show.service.response";
 
@@ -58,5 +59,14 @@ export class ShowService {
                 this.emitResponseSubject();
             } 
         });
-    }    
+    }
+
+    /**
+     * @since 1.1.0
+     * @todo 1.1.0 partir sur cette approche
+     * Inspiré de https://medium.com/egen/using-angular-httpclient-the-right-way-60c65146e5d9
+     */
+    getPoints(): Observable<MyPoint[]> {
+        return this.httpClient.get<MyPoint[]>(API_URI);
+    }
 }

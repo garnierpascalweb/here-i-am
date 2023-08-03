@@ -12,13 +12,6 @@ import { ShowService } from './services/show.service';
 import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
 
-const appRoutes : Routes = [
-  { path : 'show', component : ShowComponent },
-  { path : 'mark', component : MarkComponent },
-  // path vide, path par defaut
-  { path : '', component : ShowComponent }
-  
-] ;
 
 @NgModule({
   declarations: [
@@ -30,8 +23,7 @@ const appRoutes : Routes = [
   ],
   imports: [
     BrowserModule,    
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule   
   ],
   providers: [
     ShowService,
