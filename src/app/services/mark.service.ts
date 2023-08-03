@@ -18,7 +18,7 @@ export class MarkService {
         this.response = new MarkServiceResponse();
     }
 
-    emitResponseSubject(){
+    emitResponse(){
         if(this.response)
             this.responseSubject.next(this.response);            
     }
@@ -27,8 +27,7 @@ export class MarkService {
      * Marque la position de l'utilisateur et envoi au backend
      * @since 2.0.0
      */
-    markPosition(position: GeolocationPosition){
-        console.log('markPosition appelle');        
+    markPosition(position: GeolocationPosition){       
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
         //TODO altitude non interpretee
@@ -39,7 +38,7 @@ export class MarkService {
         this.httpClient.post(API_URI,datas)
         .subscribe({
             next: (response) => {                
-                this.response.message = 'succes de lappel';  
+                this.response.message = 'Succes de lappel';  
                 this.response.status = 'ok';  
                 this.response.lat = lat;
                 this.response.lng = lng;
@@ -47,12 +46,12 @@ export class MarkService {
                 this.response.marked=true;                               
             },
             error: (response) => {                
-                this.response.message = 'echec de lappel'
+                this.response.message = 'Echec de lappel'
                 this.response.status = 'error';  
                 this.response.marked=false;               
             },
             complete: () => {                 
-                this.emitResponseSubject();
+                this.emitResponse();
                 // apres 5 secondes, reinitialisation de lecran
                 setTimeout(
                     () => {
@@ -62,7 +61,7 @@ export class MarkService {
                         this.response.lng = 0.0;
                         this.response.alt = 0.0; 
                         this.response.marked=false;
-                        this.emitResponseSubject();            
+                        this.emitResponse();            
                     }, 5000
                 )
             } 

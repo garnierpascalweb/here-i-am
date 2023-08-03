@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { MyPoint } from '../model/mypoint.class';
 import { ShowService } from '../services/show.service';
 import { ShowServiceResponse } from '../services/show.service.response';
 
@@ -11,7 +12,7 @@ import { ShowServiceResponse } from '../services/show.service.response';
 export class ShowComponent implements OnInit, OnDestroy {
 
   response: ShowServiceResponse;  
-  responseSubscription: Subscription;
+  responseSubscription: Subscription; 
 
   constructor(private showService: ShowService) {
     this.response = new ShowServiceResponse();   
@@ -25,11 +26,11 @@ export class ShowComponent implements OnInit, OnDestroy {
       }
     );
     this.showService.showPositions();
-    this.showService.emitResponseSubject();
+    this.showService.emitResponse();   
   }
 
   ngOnDestroy(): void {
-    this.responseSubscription.unsubscribe();
+    this.responseSubscription.unsubscribe();    
   }
 
 }

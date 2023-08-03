@@ -13,7 +13,6 @@ import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
 import { AppRoutingModule } from './app-routing.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

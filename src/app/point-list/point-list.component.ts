@@ -16,6 +16,7 @@ import { ShowServiceResponse } from '../services/show.service.response';
  */
 export class PointListComponent implements OnInit, OnDestroy {
   @Input() points: any[];
+  
   constructor() {
   
   }

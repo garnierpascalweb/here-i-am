@@ -1,16 +1,18 @@
-<div class="container">
-    <div class="{{response.status}}">
-        <div class="page-header">
-            <h1>Tracer ma position</h1>
-        </div>
-        <div>
-            <strong>{{response.message}}</strong><br>
-            <div *ngIf="response.marked">
-                <strong *ngIf="response.lat">Latitude {{response.lat}}</strong><br>
-                <strong *ngIf="response.lng">Longitude {{response.lng}}</strong><br>
-                <strong *ngIf="response.alt">Altitude {{response.alt}}</strong><br>           
-            </div>            
-        </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClickButton()">Cliquer sur ce bouton pour tracer la position</button>
+<div class="{{response.status}}">
+    <div class="page-header">
+        <h1>Tracer ma position</h1>
     </div>
+    <div>
+        <strong>{{response.message}}</strong>
+        <br>
+        <div *ngIf="response.marked">
+            <strong *ngIf="response.lat">Latitude {{response.lat}}</strong>
+            <br>
+            <strong *ngIf="response.lng">Longitude {{response.lng}}</strong>
+            <br>
+            <strong *ngIf="response.alt">Altitude {{response.alt}}</strong>
+            <br>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClickButton()">Cliquer sur ce bouton pour tracer la position</button>
 </div>

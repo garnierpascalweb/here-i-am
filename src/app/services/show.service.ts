@@ -3,10 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { API_URI } from "../config/app.config";
-import { MyPoint } from "../model/point";
+import { MyPoint } from "../model/mypoint.class";
+
 import { CustomDatePipe } from "../pipe/customdatepipe";
 import { ShowServiceResponse } from "./show.service.response";
-
 
 /**
  * Service Show
@@ -24,7 +24,7 @@ export class ShowService {
         this.datepipe = new CustomDatePipe('en-US');
     }
 
-    emitResponseSubject(){
+    emitResponse(){
         if(this.response){
             this.responseSubject.next(this.response);            
         }
@@ -39,24 +39,25 @@ export class ShowService {
     showPositions(){
         this.httpClient.get<any[]>(API_URI)
         .subscribe({
-            next: (response) => {  
-                console.log("[show.service.ts] response est " + response +" de type  " + typeof response);
+            next: (response) => {                 
                 this.response.datas = response.reverse();
                 let nbTraces = this.response.datas.length;
                 let lastPoint = this.response.datas[0];
                 let lastDate = lastPoint.timepoint;
                 let lastCodePostal = lastPoint.codepostal;
                 let lastCommune = lastPoint.commune;
-                this.response.message = nbTraces + " traces enregistrées - dernière en date le " + this.datepipe.transform(lastDate) + " a proximité de  " + lastCodePostal + "  " + lastCommune;    
-                this.emitResponseSubject();        
+                this.response.message = nbTraces + ' traces enregistrées - dernière en date le ' + this.datepipe.transform(lastDate) + ' a proximité de  ' + lastCodePostal + ' ' + lastCommune;    
+                this.response.status = 'ok';
+                this.emitResponse();        
             },
             error: (error) => {                
                 this.response.datas = [];
-                this.response.message = "Echec du chargement des données  " + error.message;                  
-                this.emitResponseSubject();
+                this.response.message = 'Echec du chargement des données  ' + error.message;  
+                this.response.status = 'error';                
+                this.emitResponse();
             },
             complete: () => {                               
-                this.emitResponseSubject();
+                this.emitResponse();
             } 
         });
     }
@@ -66,7 +67,7 @@ export class ShowService {
      * @todo 1.1.0 partir sur cette approche
      * Inspiré de https://medium.com/egen/using-angular-httpclient-the-right-way-60c65146e5d9
      */
-    getPoints(): Observable<MyPoint[]> {
+    getPoints(): Observable<MyPoint[] | null> {
         return this.httpClient.get<MyPoint[]>(API_URI);
     }
 }

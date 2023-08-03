@@ -24,7 +24,7 @@ export class MarkComponent implements OnInit, OnDestroy {
         this.response = response;
       }
     );
-    this.markService.emitResponseSubject();
+    this.markService.emitResponse();
   }
 
   ngOnDestroy():void {
