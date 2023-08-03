@@ -19,6 +19,10 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    // ajout de resolveJsonModule et allowSyntheticDefaultImports pour recuperation du numero de version de l'application dans un component
+    // https://stackoverflow.com/questions/34907682/how-to-display-the-app-version-in-angular
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     // https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
     "strictPropertyInitialization": false,
     "lib": [

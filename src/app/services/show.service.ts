@@ -34,7 +34,10 @@ export class ShowService {
         .subscribe({
             next: (response) => {                
                 this.response.datas = response;
-                this.response.message = "Chargement des données OK";    
+                let nbTraces = this.response.datas.length;
+                let lastPoint = this.response.datas.reverse()[0];
+                let lastDate = lastPoint.timepoint;
+                this.response.message = nbTraces + " traces enregistrées - dernière en date le " + lastDate ;    
                 this.emitResponseSubject();        
             },
             error: (response) => {                

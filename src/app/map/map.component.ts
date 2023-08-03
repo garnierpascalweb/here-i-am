@@ -42,11 +42,12 @@ export class MapComponent implements OnInit, OnDestroy {
         this.response = response;
         // Add all markers
         if (this.response.datas) {
+          let lastPoint = response.datas.reverse()[0];
           this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v12',
             zoom: 9,
-            center: [4.07, 46.03]
+            center: [lastPoint.lng, lastPoint.lat]
           });
           this.map.addControl(new mapboxgl.NavigationControl());
           this.response.datas.forEach((point) => {
@@ -56,6 +57,7 @@ export class MapComponent implements OnInit, OnDestroy {
               .setPopup(new mapboxgl.Popup().setHTML("Le " + formattedDate + " sur la commune de " + point.codepostal + " " + point.commune + " (" + point.lat + " " + point.lng + ")"))
               .addTo(this.map);
           });
+          //this.response.message()
         }
       }
     );
