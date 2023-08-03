@@ -11,6 +11,7 @@ import { MarkService } from './services/mark.service';
 import { ShowService } from './services/show.service';
 import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -22,8 +23,9 @@ import { PointListComponent } from './point-list/point-list.component';
     PointListComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,    
-    HttpClientModule   
+    HttpClientModule
   ],
   providers: [
     ShowService,
