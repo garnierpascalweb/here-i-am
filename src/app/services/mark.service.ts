@@ -28,8 +28,10 @@ export class MarkService {
      * @since 2.0.0
      */
     markPosition(position: GeolocationPosition){       
-        let lat = position.coords.latitude;
-        let lng = position.coords.longitude;
+        // 1.2.0 arrondi a 7 decimales
+        // 1.2.0 + pour caster en int parce que toFixed renvoi string - cest vraiemnt un langage de merde        
+        let lat = +position.coords.latitude.toFixed(7);
+        let lng = +position.coords.longitude.toFixed(7);
         //TODO altitude non interpretee
         let alt = position.coords.altitude;       
         // 1.2.0 envoi de l'altitude                
