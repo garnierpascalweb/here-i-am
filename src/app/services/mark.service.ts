@@ -32,9 +32,19 @@ export class MarkService {
         let lng = position.coords.longitude;
         //TODO altitude non interpretee
         let alt = position.coords.altitude;       
-        let datas = lat + ";" + lng;
+        // 1.2.0 envoi de l'altitude                
+        // let datas = lat + ";" + lng;  
+        let datas: string; 
+        // alt peut etre null : verification prealable pour data     
+        if (alt){
+            // arrondi de laltitude a l'entier pres
+            let altRounded = Math.round(alt);
+            datas = lat + ";" + lng + ";" + altRounded;
+        } else {
+            datas = lat + ";" + lng + ";";
+        }
+                
         // mettre un timeout en 3e argument de post
-
         this.httpClient.post(API_URI,datas)
         .subscribe({
             next: (response) => {                
