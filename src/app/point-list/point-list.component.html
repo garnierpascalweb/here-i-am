@@ -4,6 +4,7 @@
           <th>Date</th>
           <th>Commune</th>
           <th>Coordonnées GPS</th>
+          <th>Altitude</th>
         </tr>
       </thead>
       <tbody>
@@ -11,6 +12,7 @@
           <td>{{ point.timepoint * 1000 | date: 'dd/MM/yyyy HH:mm' }} </td>
           <td>{{point.codepostal}} {{point.commune}}</td>
           <td>{{point.lat}}&nbsp;{{point.lng}}</td>
+          <td>{{point.alt}}</td>
         </tr>       
       </tbody> 
 </table>
