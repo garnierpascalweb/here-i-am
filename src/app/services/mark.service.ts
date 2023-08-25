@@ -30,9 +30,10 @@ export class MarkService {
     markPosition(position: GeolocationPosition){                  
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
-        //TODO altitude non interpretee
+          // 1.2.0 envoi de l'altitude  
         let alt = position.coords.altitude;       
-        // 1.2.0 envoi de l'altitude                
+        // 1.2.0 accuracy
+        let accuracy = Math.round(position.coords.accuracy);
         // let datas = lat + ";" + lng;  
         let datas: string; 
         // alt peut etre null : verification prealable pour data     
@@ -53,6 +54,7 @@ export class MarkService {
                 this.response.lat = lat;
                 this.response.lng = lng;
                 this.response.alt = alt;
+                this.response.accuracy = accuracy;
                 this.response.marked=true;                               
             },
             error: (response) => {                
