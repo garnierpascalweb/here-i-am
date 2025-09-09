@@ -11,7 +11,7 @@
         <tr *ngFor="let point of points ">
           <td>{{ point.timepoint * 1000 | date: 'dd/MM/yyyy HH:mm' }} </td>
           <td><flag [country]="point.codepays" size="s"></flag>&nbsp;{{point.codepostal}}&nbsp;{{point.commune}}</td>
-          <td>{{point.lat}}&nbsp;{{point.lng}}</td>
+          <td>{{point.lat | number:'1.5-5'}}&nbsp;{{point.lng | number:'1.5-5'}}</td>
           <td>{{point.alt}}</td>
         </tr>       
       </tbody> 

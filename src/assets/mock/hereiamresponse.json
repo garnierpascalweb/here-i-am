@@ -5,7 +5,7 @@
         "alt": "87",
         "commune": "Montrem",
         "codepostal": "24110",
-        "codepays":"fr",
+        "codepays":"ca",
         "timepoint": "1751356829"
     },
     {
@@ -13,7 +13,8 @@
         "lng": "-0.5022957883764988",
         "alt": "41",
         "commune": "Artigues-pr\u00e8s-Bordeaux",
-        "codepostal": "33370",        
+        "codepostal": "33370",  
+         "codepays":"ch",      
         "timepoint": "1751360418"
     },
     {
@@ -22,7 +23,7 @@
         "alt": "65",
         "commune": "Liposthey",
         "codepostal": "40410",
-         "codepays":"pt",
+         "codepays":"be",
         "timepoint": "1751364242"
     },
     {
@@ -31,7 +32,7 @@
         "alt": "24",
         "commune": "L\u00e9on",
         "codepostal": "40550",
-         "codepays":"sp",
+         "codepays":"br",
         "timepoint": "1751391920"
     },
     {
