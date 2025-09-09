@@ -12,6 +12,7 @@ import { ShowService } from './services/show.service';
 import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxFlagsModule } from 'ngx-flags';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     AppRoutingModule,
     BrowserModule,    
-    HttpClientModule
+    HttpClientModule,
+    NgxFlagsModule
   ],
   providers: [
     ShowService,
