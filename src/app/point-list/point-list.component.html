@@ -10,7 +10,7 @@
       <tbody>
         <tr *ngFor="let point of points ">
           <td>{{ point.timepoint * 1000 | date: 'dd/MM/yyyy HH:mm' }} </td>
-          <td>{{point.codepostal}} {{point.commune}}</td>
+          <td>{{point.codepostal}}&nbsp;{{point.commune}}</td>
           <td>{{point.lat}}&nbsp;{{point.lng}}</td>
           <td>{{point.alt}}</td>
         </tr>       

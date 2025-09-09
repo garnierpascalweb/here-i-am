@@ -10,6 +10,7 @@ export class MyPoint implements IMyPoint {
     alt: number;
     commune: string|null;
     codepostal:string|null;
+    codepays:string|null;
     timepoint:number;
 
     constructor(myPoint: IMyPoint) {
@@ -18,6 +19,7 @@ export class MyPoint implements IMyPoint {
         this.alt = myPoint.alt;
         this.commune = myPoint.commune;
         this.codepostal = myPoint.codepostal;
+        this.codepays = myPoint.codepays;
         this.timepoint = myPoint.timepoint;    
     }
 }
