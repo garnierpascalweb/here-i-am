@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { MyPoint } from '../model/mypoint.class';
 import { ShowService } from '../services/show.service';
 import { ShowServiceResponse } from '../services/show.service.response';
@@ -11,26 +13,33 @@ import { ShowServiceResponse } from '../services/show.service.response';
 })
 export class ShowComponent implements OnInit, OnDestroy {
 
-  response: ShowServiceResponse;  
-  responseSubscription: Subscription; 
+  response: ShowServiceResponse;
+  responseSubscription: Subscription;
 
-  constructor(private showService: ShowService) {
-    this.response = new ShowServiceResponse();   
+  constructor(private http: HttpClient, private showService: ShowService) {
+    this.response = new ShowServiceResponse();
     this.responseSubscription = new Subscription();
   }
 
   ngOnInit(): void {
     this.responseSubscription = this.showService.responseSubject.subscribe(
-      (response:ShowServiceResponse) => {
+      (response: ShowServiceResponse) => {
         this.response = response;
       }
     );
     this.showService.showPositions();
-    this.showService.emitResponse();   
+    this.showService.emitResponse();
+    // 1.3.0: tracking sur le show
+    if (environment.production) {
+      this.http.post(environment.trackingUrl, {}, {
+        params: { script: 'HereIAmShow' }
+      }
+      ).subscribe();
+    }
   }
 
   ngOnDestroy(): void {
-    this.responseSubscription.unsubscribe();    
+    this.responseSubscription.unsubscribe();
   }
 
 }
