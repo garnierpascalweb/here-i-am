@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { MAPBOX_ACCESS_TOKEN } from '../config/app.config';
+import { environment } from 'src/environments/environment';
 import { CustomDatePipe } from '../pipe/customdatepipe';
 
 
@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, OnChanges {
    */
   ngOnInit() {
     // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467 
-    (mapboxgl as any).accessToken = MAPBOX_ACCESS_TOKEN;          
+    (mapboxgl as any).accessToken = environment.mapBoxAccessToken;          
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v12',

@@ -65,6 +65,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               //https://www.journaldunet.fr/web-tech/developpement/1499373-angular-comment-corriger-l-erreur-warning-in-budgets-maximum-exceeded-for-initial/
               "budgets": [
                 {
@@ -80,7 +86,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "development": {              
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -121,7 +127,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-               {
+              {
                 "glob": "**/*",
                 "input": "node_modules/ngx-flags/img/flags",
                 "output": "assets/flags"

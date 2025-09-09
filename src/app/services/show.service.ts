@@ -2,9 +2,8 @@ import { DatePipe } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { API_URI } from "../config/app.config";
+import { environment } from 'src/environments/environment';
 import { MyPoint } from "../model/mypoint.class";
-
 import { CustomDatePipe } from "../pipe/customdatepipe";
 import { ShowServiceResponse } from "./show.service.response";
 
@@ -37,7 +36,7 @@ export class ShowService {
      * @todo a faire
      */
     showPositions(){
-        this.httpClient.get<any[]>(API_URI)
+        this.httpClient.get<any[]>(environment.apiUrl)
         .subscribe({
             next: (response) => {                 
                 this.response.datas = response.reverse();
@@ -68,6 +67,6 @@ export class ShowService {
      * Inspiré de https://medium.com/egen/using-angular-httpclient-the-right-way-60c65146e5d9
      */
     getPoints(): Observable<MyPoint[] | null> {
-        return this.httpClient.get<MyPoint[]>(API_URI);
+        return this.httpClient.get<MyPoint[]>(environment.apiUrl);
     }
 }

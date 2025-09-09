@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
-import { API_URI } from "../config/app.config";
+import { environment } from 'src/environments/environment';
 import { MarkServiceResponse } from "./mark.service.response";
 
 /**
@@ -46,7 +46,7 @@ export class MarkService {
         }
                 
         // mettre un timeout en 3e argument de post
-        this.httpClient.post(API_URI,datas)
+        this.httpClient.post(environment.apiUrl,datas)
         .subscribe({
             next: (response) => {                
                 this.response.message = 'Succes de lappel';  
