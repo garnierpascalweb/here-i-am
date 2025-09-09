@@ -120,7 +120,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+               {
+                "glob": "**/*",
+                "input": "node_modules/ngx-flags/img/flags",
+                "output": "assets/flags"
+              }
             ],
             "styles": [
               "src/styles.scss"
