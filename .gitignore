@@ -27,3 +27,6 @@ npm-debug.log
 node-http-server-config.js
 node_modules/**
 node_modules
+environment.ts
+environment.prod.ts
+environment.test.ts
