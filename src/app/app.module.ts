@@ -13,6 +13,7 @@ import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxFlagsModule } from 'ngx-flags';
+import { ConfigComponent } from './config/config.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxFlagsModule } from 'ngx-flags';
     ShowComponent,
     MarkComponent,
     MapComponent,
-    PointListComponent
+    PointListComponent,
+    ConfigComponent
   ],
   imports: [
     AppRoutingModule,
