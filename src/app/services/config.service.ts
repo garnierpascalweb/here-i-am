@@ -18,13 +18,15 @@ this.response = new ConfigServiceResponse();
 
   emitResponse(){
         if(this.response){
-            this.responseSubject.next(this.response);   
-            console.log("response rendue " + JSON.stringify(this.response));
+            this.responseSubject.next(this.response);             
         }
     }
 
+    /**
+     * chargement de la configuration
+     */
   getConfig(){
-    this.http.get<ConfigServiceResponse>(environment.apiUrlConfig)
+    this.http.get<ConfigServiceResponse>(environment.endpoints.config)
         .subscribe({
             next: (response) => {                                
                 this.response.message = 'Configuration chargée avec succès';    
@@ -42,5 +44,39 @@ this.response = new ConfigServiceResponse();
             } 
         });
     
+  }
+
+  /**
+   * changement de la configuration
+   * @param impl nouvelle implementation a utiliser
+   */
+  changeConfig(impl: string) {
+    let datas={
+      "geoloc": {
+      "current": impl
+      }
+    }
+    this.http.patch(environment.endpoints.config,datas)
+        .subscribe({
+            next: (response) => {                
+                this.response.message = 'Succes du changement de configuration pour GeoLoc : ' + impl;  
+                this.response.status = 'ok';                          
+            },
+            error: (response) => {                
+                this.response.message = 'Echec de lappel'
+                this.response.status = 'error';                            
+            },
+            complete: () => {                 
+                this.emitResponse();
+                // apres 5 secondes, reinitialisation de lecran
+                setTimeout(
+                    () => {
+                        this.response.message = ''
+                        this.response.status = 'default';                       
+                        this.emitResponse();            
+                    }, 5000
+                )
+            } 
+        });
   }
 }

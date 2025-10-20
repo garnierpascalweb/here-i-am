@@ -1,8 +1,8 @@
-export class ConfigServiceResponse {   
+export class ConfigServiceResponse {
     message: string;
     status: string;
-  geoloc: {
-    current: string;
-    all: string[];
-  };
+    geoloc: {
+        current: string;
+        all: string[];
+    };
 }

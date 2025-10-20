@@ -11,8 +11,7 @@ import { ConfigServiceResponse } from '../services/config.service.response';
 })
 export class ConfigComponent implements OnInit, OnDestroy {
    response : ConfigServiceResponse; 
-  responseSubscription: Subscription;
-  selectedOption: string;
+  responseSubscription: Subscription; 
 
     constructor(private configService : ConfigService){
  this.response = new ConfigServiceResponse();
@@ -22,9 +21,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
    ngOnInit(): void {
      this.responseSubscription = this.configService.responseSubject.subscribe(
       (response: ConfigServiceResponse) => {
-        this.response = response;
-        this.selectedOption = response.geoloc.current;
-        //console.log("on lit " + JSON.stringify(this.response));
+        this.response = response;        
       }
     ); 
     this.configService.getConfig();   
@@ -35,9 +32,10 @@ export class ConfigComponent implements OnInit, OnDestroy {
      this.responseSubscription.unsubscribe();
    }
 
-   
-   onClickButton() { 
 
+   onClickButton() { 
+      this.configService.changeConfig(this.response.geoloc.current);
+      this.configService.emitResponse();    
    }
 
 }

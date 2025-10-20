@@ -36,7 +36,7 @@ export class ShowService {
      * @todo a faire
      */
     showPositions(){
-        this.httpClient.get<any[]>(environment.apiUrl)
+        this.httpClient.get<any[]>(environment.endpoints.hereiam)
         .subscribe({
             next: (response) => {                 
                 this.response.datas = response.reverse();
@@ -67,6 +67,6 @@ export class ShowService {
      * Inspiré de https://medium.com/egen/using-angular-httpclient-the-right-way-60c65146e5d9
      */
     getPoints(): Observable<MyPoint[] | null> {
-        return this.httpClient.get<MyPoint[]>(environment.apiUrl);
+        return this.httpClient.get<MyPoint[]>(environment.endpoints.tracking);
     }
 }

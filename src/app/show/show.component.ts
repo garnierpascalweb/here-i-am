@@ -31,7 +31,7 @@ export class ShowComponent implements OnInit, OnDestroy {
     this.showService.emitResponse();
     // 1.3.0: tracking sur le show
     if (environment.production) {
-      this.http.post(environment.trackingUrl, {}, {
+      this.http.post(environment.endpoints.tracking, {}, {
         params: { script: 'HereIAmShow' }
       }
       ).subscribe();
