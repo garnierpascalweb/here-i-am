@@ -10,32 +10,31 @@ import { ConfigServiceResponse } from '../services/config.service.response';
   styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit, OnDestroy {
-   response : ConfigServiceResponse; 
-  responseSubscription: Subscription; 
+  response: ConfigServiceResponse;
+  responseSubscription: Subscription;
 
-    constructor(private configService : ConfigService){
- this.response = new ConfigServiceResponse();
+  constructor(private configService: ConfigService) {
+    this.response = new ConfigServiceResponse();
     this.responseSubscription = new Subscription();
-    }
+  }
 
-   ngOnInit(): void {
-     this.responseSubscription = this.configService.responseSubject.subscribe(
+  ngOnInit(): void {
+    this.responseSubscription = this.configService.responseSubject.subscribe(
       (response: ConfigServiceResponse) => {
-        this.response = response;        
+        this.response = response;
       }
-    ); 
-    this.configService.getConfig();   
-    this.configService.emitResponse();    
-   }
-   
-  ngOnDestroy(): void {    
-     this.responseSubscription.unsubscribe();
-   }
+    );
+    this.configService.getConfig();
+    this.configService.emitResponse();
+  }
+
+  ngOnDestroy(): void {
+    this.responseSubscription.unsubscribe();
+  }
 
 
-   onClickButton() { 
-      this.configService.changeConfig(this.response.geoloc.current);
-      this.configService.emitResponse();    
-   }
-
+  onClickButton() {
+    this.configService.changeConfig(this.response.geoloc.current);
+    
+  }
 }

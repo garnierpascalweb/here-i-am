@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 ## Next Release
-mocker l'API en rendant un json foobar  
+mocker l'API en rendant un json foobar  FAIT (1.4.0)
 redimensionner la map correcteemnt  
 gerer l'altitude au niveau du backend  FAIT (1.2.0)
 utiliser IMyPoint et MyPoint  
