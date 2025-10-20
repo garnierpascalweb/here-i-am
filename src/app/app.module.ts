@@ -14,6 +14,7 @@ import { PointListComponent } from './point-list/point-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxFlagsModule } from 'ngx-flags';
 import { ConfigComponent } from './config/config.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ConfigComponent } from './config/config.component';
     AppRoutingModule,
     BrowserModule,    
     HttpClientModule,
-    NgxFlagsModule
+    NgxFlagsModule,
+    FormsModule
   ],
   providers: [
     ShowService,

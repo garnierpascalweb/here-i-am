@@ -3,7 +3,15 @@
         <h1>Configuration</h1>
     </div>
     <div>
-       
+       <label for="geoloc" class="block font-semibold mb-2">
+    Choisir l’implémentation de géolocalisation :
+  </label>
+
+  <select id="geoloc" [(ngModel)]="selectedOption" class="custom-select">    
+    <option *ngFor="let currentGeolocImpl of response.geoloc.all" [value]="currentGeolocImpl">
+      {{ currentGeolocImpl }}
+    </option>
+  </select>
     </div>
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClickButton()">Enregistrer</button>
 </div>
