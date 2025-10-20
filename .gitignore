@@ -28,5 +28,3 @@ node-http-server-config.js
 node_modules/**
 node_modules
 **/environment.prod.ts
-**/environment.ts
-**/environment.test.ts
