@@ -47,15 +47,14 @@ export class ConfigService {
     }
 
     /**
-     * changement de la configuration
+     * modification de la configuration
      * @param impl nouvelle implementation a utiliser
      */
     changeConfig(impl: string) {
         let datas = {
-            "geoloc": {
-                "current": impl
-            }
-        }
+                    configName: "geoloc",
+                    current: impl
+         };
         this.http.patch(environment.endpoints.config, datas)
             .pipe(
                 finalize(() => {
@@ -75,7 +74,7 @@ export class ConfigService {
                     this.response.status = 'ok';
                 },
                 error: (response) => {
-                    this.response.message = 'Echec de lappel'
+                    this.response.message = 'Echec du changement de la configuration'
                     this.response.status = 'error';
                 }
             });
