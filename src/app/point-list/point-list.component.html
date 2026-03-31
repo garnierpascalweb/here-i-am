@@ -5,6 +5,7 @@
           <th>Commune</th>
           <th>Coordonnées GPS</th>
           <th>Altitude</th>
+          <th>Météo</th>
         </tr>
       </thead>
       <tbody>
@@ -13,6 +14,7 @@
           <td><flag *ngIf="point.codepays" [country]="point.codepays" size="s"></flag>&nbsp;{{point.codepostal}}&nbsp;{{point.commune}}</td>
           <td>{{point.lat | number:'1.5-5'}}&nbsp;{{point.lng | number:'1.5-5'}}</td>
           <td>{{point.alt}}</td>
+          <td>{{point.weathercode}}{{point.temperature}}</td>
         </tr>       
       </tbody> 
 </table>

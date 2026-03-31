@@ -12,6 +12,8 @@ export class MyPoint implements IMyPoint {
     codepostal:string|null;
     codepays:string|null;
     timepoint:number;
+    weathercode: number;
+    temperature: number;
 
     constructor(myPoint: IMyPoint) {
         this.lat = myPoint.lat;
@@ -21,5 +23,8 @@ export class MyPoint implements IMyPoint {
         this.codepostal = myPoint.codepostal;
         this.codepays = myPoint.codepays;
         this.timepoint = myPoint.timepoint;    
+        this.weathercode = myPoint.weathercode;
+        this.temperature = myPoint.temperature;
     }
+
 }

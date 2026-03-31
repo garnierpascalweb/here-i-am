@@ -6,4 +6,6 @@ export interface IMyPoint {
     codepostal:string|null;
     codepays:string|null;
     timepoint:number;
+    weathercode:number;
+    temperature:number;
 }
