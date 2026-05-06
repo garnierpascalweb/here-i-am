@@ -4,6 +4,7 @@ export const environment = {
   endpoints: {
     hereiam:'assets/mock/here-i-am-response.json',
     config:'assets/mock/config-response.json',
-    tracking: 'assets/mock/tracking-response.json'
+    tracking: 'assets/mock/tracking-response.json',
+    weather: 'https://api.open-meteo.com/v1/forecast'
   } 
 };
