@@ -12,7 +12,6 @@ import { ShowService } from './services/show.service';
 import { MapComponent } from './map/map.component';
 import { PointListComponent } from './point-list/point-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { NgxFlagsModule } from 'ngx-flags';
 import { ConfigComponent } from './config/config.component';
 import { FormsModule } from '@angular/forms';
 
@@ -28,8 +27,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     AppRoutingModule,
     BrowserModule,    
-    HttpClientModule,
-    NgxFlagsModule,
+    HttpClientModule,    
     FormsModule
   ],
   providers: [
