@@ -11,44 +11,84 @@ import { WeatherResponse } from '../model/weather/weather-response';
 export class WeatherService {
   constructor() {}
 
+ private basePath = 'assets/weather/';
 
-  getWeatherIcon(code: number, isDay: number): string {
-    if (code === 0) return isDay ? 'wi-day-sunny' : 'wi-night-clear';
-    if ([1,2].includes(code)) return isDay ? 'wi-day-cloudy' : 'wi-night-alt-cloudy';
-    if (code === 3) return 'wi-cloudy';
+  private iconMap: Record<number, string> = {
+    0: 'clear-day.svg',
 
-    if ([45,48].includes(code)) return 'wi-fog';
+    1: 'mostly-clear-day.svg',
+    2: 'partly-cloudy-day.svg',
+    3: 'overcast.svg',
 
-    if ([51,53,55].includes(code)) return 'wi-sprinkle';
+    45: 'fog.svg',
+    48: 'fog.svg',
 
-    if ([61,63,65].includes(code)) return 'wi-rain';
+    51: 'drizzle.svg',
+    52: 'drizzle.svg',
+    53: 'drizzle.svg',
+    54: 'drizzle.svg',
+    55: 'drizzle.svg',
 
-    if ([71,73,75].includes(code)) return 'wi-snow';
+    56: 'sleet.svg',
+    57: 'sleet.svg',
 
-    if ([80,81,82].includes(code)) return 'wi-showers';
+    61: 'rain.svg',
+    62: 'rain.svg',
+    63: 'overcast-rain.svg',
+    64: 'overcast-rain.svg',
+    65: 'overcast-rain.svg',
 
-    if ([95,96,99].includes(code)) return 'wi-thunderstorm';
+    66: 'rain.svg',
+    67: 'overcast-rain.svg',
 
-    return 'wi-na';
+    71: 'snow.svg',
+    72: 'snow.svg',
+    73: 'snow.svg',
+    74: 'snow.svg',
+    75: 'snow.svg',
+    76: 'snow.svg',
+    77: 'snow.svg',
+    78: 'snow.svg',
+    79: 'snow.svg',
+
+    80: 'partly-cloudy-day-rain.svg',
+    81: 'overcast-rain.svg',
+    82: 'extreme-rain.svg',
+    84: 'extreme-rain.svg',
+
+    95: 'thunderstorms.svg',
+    96: 'thunderstorms-rain.svg',
+    97: 'extreme-thunderstorms.svg',
+    98: 'extreme-thunderstorms.svg',
+    99: 'extreme-thunderstorms-rain.svg',
+  };
+
+  getWeatherIcon(code: number): string {
+    const file = this.iconMap[code] ?? 'not-available.svg';
+    return `${this.basePath}${file}`;
   }
 
-  getWeatherLabel(code: number): string {
-    if (code === 0) return 'Ensoleillé';
-    if ([1,2].includes(code)) return 'Partiellement nuageux';
-    if (code === 3) return 'Nuageux';
+  getTemperatureColor(temp: number): string {
+  const min = -25;
+  const max = 45;
+  const pivot = 15;
 
-    if ([45,48].includes(code)) return 'Brouillard';
+  let ratio: number;
 
-    if ([51,53,55].includes(code)) return 'Bruine';
-
-    if ([61,63,65].includes(code)) return 'Pluie';
-
-    if ([71,73,75].includes(code)) return 'Neige';
-
-    if ([80,81,82].includes(code)) return 'Averses';
-
-    if ([95,96,99].includes(code)) return 'Orage';
-
-    return 'Inconnu';
+  if (temp <= pivot) {
+    // bleu -> neutre
+    ratio = (temp - min) / (pivot - min); // 0 → 1
+    const hue = 210; // bleu
+    const saturation = 90;
+    const lightness = 55 + (ratio * 10); // un peu plus doux en montant
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  } else {
+    // neutre -> rouge
+    ratio = (temp - pivot) / (max - pivot); // 0 → 1
+    const hue = 0; // rouge
+    const saturation = 90;
+    const lightness = 65 - (ratio * 15); // plus vif en montant
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
+}
 }

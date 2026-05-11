@@ -14,7 +14,7 @@
           <td><span>🇫🇷</span>&nbsp;{{point.codepostal}}&nbsp;{{point.commune}}</td>
           <td>{{point.lat | number:'1.5-5'}}&nbsp;{{point.lng | number:'1.5-5'}}</td>
           <td>{{point.alt}}</td>
-          <td>{{point.weathercode}}{{point.temperature}} soleil  fin soleil</td>
+          <td><img class="weather-icon" [src]="getIcon(point.weathercode)" alt="weather icon">&nbsp;<span class="temperature" [style.color]="getTemperatureColor(point.temperature)"> {{ point.temperature }}°C</span></td>
         </tr>       
       </tbody> 
 </table>

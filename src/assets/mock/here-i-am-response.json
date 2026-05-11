@@ -8,7 +8,7 @@
     "codepays": "fr",
     "timepoint": "1757763117",
     "weathercode": 0,
-    "temperature": 12.4
+    "temperature": 15
   },
   {
     "lat": "45.764043",
@@ -17,9 +17,9 @@
     "commune": "Lyon",
     "codepostal": "69000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763116",
     "weathercode": 1,
-    "temperature": 14.2
+    "temperature": 18
   },
   {
     "lat": "43.296482",
@@ -28,9 +28,9 @@
     "commune": "Marseille",
     "codepostal": "13000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763115",
     "weathercode": 2,
-    "temperature": 18.6
+    "temperature": 21
   },
   {
     "lat": "48.8566",
@@ -39,9 +39,9 @@
     "commune": "Paris",
     "codepostal": "75000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763114",
     "weathercode": 3,
-    "temperature": 10.1
+    "temperature": 24
   },
   {
     "lat": "47.2184",
@@ -50,9 +50,9 @@
     "commune": "Nantes",
     "codepostal": "44000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763113",
     "weathercode": 45,
-    "temperature": 7.8
+    "temperature": 27
   },
   {
     "lat": "43.6047",
@@ -61,9 +61,9 @@
     "commune": "Toulouse",
     "codepostal": "31000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763112",
     "weathercode": 48,
-    "temperature": 9.2
+    "temperature": 30
   },
   {
     "lat": "43.7102",
@@ -72,9 +72,9 @@
     "commune": "Nice",
     "codepostal": "06000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763111",
     "weathercode": 51,
-    "temperature": 16.0
+    "temperature": 33
   },
   {
     "lat": "50.6292",
@@ -83,9 +83,9 @@
     "commune": "Lille",
     "codepostal": "59000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763110",
     "weathercode": 53,
-    "temperature": 6.4
+    "temperature": 36
   },
   {
     "lat": "49.1829",
@@ -94,9 +94,9 @@
     "commune": "Caen",
     "codepostal": "14000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763109",
     "weathercode": 55,
-    "temperature": 8.1
+    "temperature": 39
   },
   {
     "lat": "45.1885",
@@ -105,9 +105,9 @@
     "commune": "Grenoble",
     "codepostal": "38000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763108",
     "weathercode": 56,
-    "temperature": -2.3
+    "temperature": 12
   },
   {
     "lat": "45.764043",
@@ -116,9 +116,9 @@
     "commune": "Lyon",
     "codepostal": "69000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763107",
     "weathercode": 57,
-    "temperature": -1.0
+    "temperature": 9
   },
   {
     "lat": "48.5734",
@@ -127,9 +127,9 @@
     "commune": "Strasbourg",
     "codepostal": "67000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763106",
     "weathercode": 61,
-    "temperature": 11.3
+    "temperature": 6
   },
   {
     "lat": "43.6047",
@@ -138,9 +138,9 @@
     "commune": "Toulouse",
     "codepostal": "31000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763105",
     "weathercode": 63,
-    "temperature": 12.9
+    "temperature": 3
   },
   {
     "lat": "48.8566",
@@ -149,9 +149,9 @@
     "commune": "Paris",
     "codepostal": "75000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763104",
     "weathercode": 65,
-    "temperature": 9.4
+    "temperature": 0
   },
   {
     "lat": "44.8378",
@@ -160,9 +160,9 @@
     "commune": "Bordeaux",
     "codepostal": "33000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763103",
     "weathercode": 66,
-    "temperature": 4.1
+    "temperature": -3
   },
   {
     "lat": "46.2044",
@@ -171,9 +171,9 @@
     "commune": "Bourg-en-Bresse",
     "codepostal": "01000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763102",
     "weathercode": 67,
-    "temperature": 3.8
+    "temperature": -6
   },
   {
     "lat": "48.3904",
@@ -182,9 +182,9 @@
     "commune": "Brest",
     "codepostal": "29200",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763101",
     "weathercode": 71,
-    "temperature": -1.2
+    "temperature": -9
   },
   {
     "lat": "45.7772",
@@ -193,9 +193,9 @@
     "commune": "Clermont-Ferrand",
     "codepostal": "63000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763100",
     "weathercode": 73,
-    "temperature": -3.5
+    "temperature": -12
   },
   {
     "lat": "44.0176",
@@ -204,9 +204,9 @@
     "commune": "Montauban",
     "codepostal": "82000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763099",
     "weathercode": 75,
-    "temperature": -6.0
+    "temperature": -15
   },
   {
     "lat": "46.2276",
@@ -215,9 +215,9 @@
     "commune": "France Centrale",
     "codepostal": "00000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763098",
     "weathercode": 77,
-    "temperature": -8.0
+    "temperature": -18
   },
   {
     "lat": "43.7102",
@@ -226,9 +226,9 @@
     "commune": "Nice",
     "codepostal": "06000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763097",
     "weathercode": 80,
-    "temperature": 15.2
+    "temperature": -21
   },
   {
     "lat": "47.3220",
@@ -237,9 +237,9 @@
     "commune": "Dijon",
     "codepostal": "21000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763096",
     "weathercode": 81,
-    "temperature": 10.7
+    "temperature": -24
   },
   {
     "lat": "50.6292",
@@ -248,9 +248,9 @@
     "commune": "Lille",
     "codepostal": "59000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763095",
     "weathercode": 82,
-    "temperature": 6.1
+    "temperature": 0
   },
   {
     "lat": "48.8566",
@@ -259,9 +259,9 @@
     "commune": "Paris",
     "codepostal": "75000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763094",
     "weathercode": 84,
-    "temperature": 2.3
+    "temperature": -0
   },
   {
     "lat": "45.1885",
@@ -270,9 +270,9 @@
     "commune": "Grenoble",
     "codepostal": "38000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763093",
     "weathercode": 85,
-    "temperature": -5.2
+    "temperature": 0
   },
   {
     "lat": "45.764043",
@@ -281,7 +281,7 @@
     "commune": "Lyon",
     "codepostal": "69000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763092",
     "weathercode": 86,
     "temperature": -6.8
   },
@@ -292,7 +292,7 @@
     "commune": "Paris",
     "codepostal": "75000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763091",
     "weathercode": 95,
     "temperature": 13.0
   },
@@ -303,7 +303,7 @@
     "commune": "Marseille",
     "codepostal": "13000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763090",
     "weathercode": 96,
     "temperature": 17.5
   },
@@ -314,7 +314,7 @@
     "commune": "Toulouse",
     "codepostal": "31000",
     "codepays": "fr",
-    "timepoint": "1757763117",
+    "timepoint": "1757763089",
     "weathercode": 99,
     "temperature": 14.8
   }

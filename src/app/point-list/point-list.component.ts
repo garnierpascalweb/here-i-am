@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShowService } from '../services/show.service';
 import { ShowServiceResponse } from '../services/show.service.response';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-point-list',
@@ -17,7 +18,7 @@ import { ShowServiceResponse } from '../services/show.service.response';
 export class PointListComponent implements OnInit, OnDestroy {
   @Input() points: any[];
   
-  constructor() {
+  constructor(private weatherService : WeatherService) {
   
   }
 
@@ -28,4 +29,11 @@ export class PointListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     
   }
+
+  getIcon(code: number): string {
+  return this.weatherService.getWeatherIcon(code);
+}
+getTemperatureColor(temp: number) :  string {
+  return this.weatherService.getTemperatureColor(temp);
+}
 }
