@@ -1,4 +1,3 @@
-import { MyPoint } from "../model/mypoint.class";
 
 
 /**

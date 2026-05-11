@@ -1,9 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { WeatherData } from '../model/weather/weather-data';
-import { WeatherResponse } from '../model/weather/weather-response';
+
 
 @Injectable({
   providedIn: 'root'
@@ -92,5 +88,56 @@ export class WeatherService {
     const lightness = 65 - (ratio * 15); // plus vif en montant
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
+}
+
+getWeatherDescription(code: number): string {
+  const map: Record<number, string> = {
+    0: 'ciel limpide',
+    1: 'principalement ensoleillé',
+    2: 'partiellement nuageux',
+    3: 'couvert',
+
+    45: 'brouillard',
+    48: 'brouillard givrant',
+
+    51: 'bruine légère',
+    52: 'bruine modérée',
+    53: 'bruine dense',
+    54: 'bruine très dense',
+    55: 'bruine intense',
+
+    56: 'bruine verglaçante légère',
+    57: 'bruine verglaçante forte',
+
+    61: 'pluie faible',
+    62: 'pluie modérée',
+    63: 'pluie forte',
+    64: 'pluie très forte',
+    65: 'pluie intense',
+
+    66: 'pluie verglaçante légère',
+    67: 'pluie verglaçante forte',
+
+    71: 'neige faible',
+    72: 'neige modérée',
+    73: 'neige forte',
+    74: 'neige très forte',
+    75: 'neige extrême',
+    76: 'neige persistante',
+    77: 'grains de neige',
+
+    80: 'averses faibles',
+    81: 'averses modérées',
+    82: 'averses fortes',
+
+    85: 'averses de neige faibles',
+    86: 'averses de neige fortes',
+
+    95: 'ruscle',
+    96: 'ruscle',
+    99: 'ruscle'
+  };
+
+  return map[code] ?? 'météo inconnue';
 }
 }

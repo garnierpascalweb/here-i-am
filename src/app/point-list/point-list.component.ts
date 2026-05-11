@@ -1,8 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { FlagService } from '../services/flag.service';
-import { ShowService } from '../services/show.service';
-import { ShowServiceResponse } from '../services/show.service.response';
 import { WeatherService } from '../services/weather.service';
 
 @Component({
@@ -39,5 +36,9 @@ getTemperatureColor(temp: number) :  string {
 }
 getFlagIcon(code:string) : string {
 return this.flagService.getFlagIcon(code);
+}
+
+getWeatherDescription(code: number){
+  return this.weatherService.getWeatherDescription(code);
 }
 }

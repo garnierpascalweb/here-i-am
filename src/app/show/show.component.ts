@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MyPoint } from '../model/mypoint.class';
 import { ShowService } from '../services/show.service';
 import { ShowServiceResponse } from '../services/show.service.response';
 
