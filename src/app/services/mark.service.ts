@@ -44,7 +44,7 @@ export class MarkService {
 
     // mettre un timeout en 3e argument de post
     this.httpClient
-      .post(environment.endpoints.hereiam, datas)
+      .post(environment.endpoints.hereiam, datas, { responseType: 'text' })
       .pipe(
         finalize(() => {
           // Code exécuté après next ou error, sûr pour les HTTP
