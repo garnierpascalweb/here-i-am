@@ -317,5 +317,172 @@
     "timepoint": "1757763089",
     "weathercode": 99,
     "temperature": 14.8
+  },
+  
+  {
+    "lat": "48.8566",
+    "lng": "2.3522",
+    "alt": "35",
+    "commune": "Paris",
+    "codepostal": "75000",
+    "codepays": "fr",
+    "timepoint": "1757763116",
+    "weathercode": 2,
+    "temperature": 12
+  },
+  {
+    "lat": "43.2965",
+    "lng": "5.3698",
+    "alt": "0",
+    "commune": "Marseille",
+    "codepostal": "13000",
+    "codepays": "fr",
+    "timepoint": "1757763116",
+    "weathercode": 61,
+    "temperature": 18
+  },
+  {
+    "lat": "41.3851",
+    "lng": "2.1734",
+    "alt": "12",
+    "commune": "Barcelona",
+    "codepostal": "08000",
+    "codepays": "es",
+    "timepoint": "1757763116",
+    "weathercode": 0,
+    "temperature": 22
+  },
+  {
+    "lat": "40.4168",
+    "lng": "-3.7038",
+    "alt": "667",
+    "commune": "Madrid",
+    "codepostal": "28000",
+    "codepays": "es",
+    "timepoint": "1757763116",
+    "weathercode": 3,
+    "temperature": 25
+  },
+  {
+    "lat": "41.9028",
+    "lng": "12.4964",
+    "alt": "21",
+    "commune": "Rome",
+    "codepostal": "00100",
+    "codepays": "it",
+    "timepoint": "1757763116",
+    "weathercode": 51,
+    "temperature": 20
+  },
+  {
+    "lat": "45.4642",
+    "lng": "9.1900",
+    "alt": "120",
+    "commune": "Milan",
+    "codepostal": "20100",
+    "codepays": "it",
+    "timepoint": "1757763116",
+    "weathercode": 80,
+    "temperature": 17
+  },
+  {
+    "lat": "52.5200",
+    "lng": "13.4050",
+    "alt": "34",
+    "commune": "Berlin",
+    "codepostal": "10115",
+    "codepays": "de",
+    "timepoint": "1757763116",
+    "weathercode": 45,
+    "temperature": 9
+  },
+  {
+    "lat": "48.1351",
+    "lng": "11.5820",
+    "alt": "520",
+    "commune": "Munich",
+    "codepostal": "80331",
+    "codepays": "de",
+    "timepoint": "1757763116",
+    "weathercode": 71,
+    "temperature": -2
+  },
+  {
+    "lat": "50.0755",
+    "lng": "14.4378",
+    "alt": "200",
+    "commune": "Prague",
+    "codepostal": "11000",
+    "codepays": "cz",
+    "timepoint": "1757763116",
+    "weathercode": 53,
+    "temperature": 6
+  },
+  {
+    "lat": "52.3676",
+    "lng": "4.9041",
+    "alt": "2",
+    "commune": "Amsterdam",
+    "codepostal": "1012",
+    "codepays": "nl",
+    "timepoint": "1757763116",
+    "weathercode": 61,
+    "temperature": 11
+  },
+  {
+    "lat": "51.5074",
+    "lng": "-0.1278",
+    "alt": "35",
+    "commune": "London",
+    "codepostal": "EC1A",
+    "codepays": "gb",
+    "timepoint": "1757763116",
+    "weathercode": 3,
+    "temperature": 13
+  },
+  {
+    "lat": "55.7558",
+    "lng": "37.6173",
+    "alt": "144",
+    "commune": "Moscow",
+    "codepostal": "101000",
+    "codepays": "ru",
+    "timepoint": "1757763116",
+    "weathercode": 75,
+    "temperature": -8
+  },
+  {
+    "lat": "59.3293",
+    "lng": "18.0686",
+    "alt": "28",
+    "commune": "Stockholm",
+    "codepostal": "11120",
+    "codepays": "se",
+    "timepoint": "1757763116",
+    "weathercode": 48,
+    "temperature": 3
+  },
+  {
+    "lat": "47.4979",
+    "lng": "19.0402",
+    "alt": "96",
+    "commune": "Budapest",
+    "codepostal": "1051",
+    "codepays": "hu",
+    "timepoint": "1757763116",
+    "weathercode": 80,
+    "temperature": 14
+  },
+  {
+    "lat": "50.1109",
+    "lng": "8.6821",
+    "alt": "112",
+    "commune": "Frankfurt",
+    "codepostal": "60311",
+    "codepays": "de",
+    "timepoint": "1757763116",
+    "weathercode": 2,
+    "temperature": 10
   }
+
 ]

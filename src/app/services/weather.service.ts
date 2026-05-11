@@ -55,6 +55,8 @@ export class WeatherService {
     81: 'overcast-rain.svg',
     82: 'extreme-rain.svg',
     84: 'extreme-rain.svg',
+    85: 'partly-cloudy-day-snow.svg',   // neige légère / intermittente
+    86: 'extreme-snow.svg',
 
     95: 'thunderstorms.svg',
     96: 'thunderstorms-rain.svg',
