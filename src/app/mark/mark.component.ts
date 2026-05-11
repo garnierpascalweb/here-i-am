@@ -34,37 +34,53 @@ export class MarkComponent implements OnInit, OnDestroy {
    * Click sur le bouton
    * @since 2.0.0
    */
-  onClickButton() {
-    this.response.message = "Envoi de la position en cours";
-    this.response.status = "warning";
+  onClickButton(): void {
     this.response.marked = false;
-    let geoLocOptions = {
-      enabledHighAccruracy: true,
+    this.setResponse("Envoi de la position en cours", "warning");
+
+    const geoLocOptions: PositionOptions = {
+      enableHighAccuracy: true,
       maximumAge: 10000,
       timeout: 10000,
     };
-    // calcul de la position
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition): void => {
-          if (position) {
-            this.markService.markPosition(position);
-          } else {
-            this.response.message = "Impossible de calculer la position";
-            this.response.status = "danger";
-            //this.response.response = 'btn btn-danger';
-          }
-        },
-        (error: GeolocationPositionError) => {
-          this.response.message =
-            "Erreur lors de la recuperation de la position";
-          this.response.status = "danger";
-        },
-        geoLocOptions,
-      );
-    } else {
-      this.response.message = "La geolocalisation nest pas supportee";
-      this.response.status = "warning";
+
+    if (!navigator.geolocation) {
+      this.setResponse("La géolocalisation n'est pas supportée", "warning");
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition): void => {
+        this.markService.markPosition(position);
+      },
+
+      (error: GeolocationPositionError): void => {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            this.setResponse("Permission de géolocalisation refusée", "danger");
+            break;
+
+          case error.TIMEOUT:
+            this.setResponse(
+              "Délai dépassé pour récupérer la position",
+              "warning",
+            );
+            break;
+
+          default:
+            this.setResponse(
+              "Erreur lors de la récupération de la position",
+              "danger",
+            );
+        }
+      },
+
+      geoLocOptions,
+    );
+  }
+
+  private setResponse(message: string, status: string): void {
+    this.response.message = message;
+    this.response.status = status;
   }
 }

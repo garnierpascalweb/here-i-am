@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { finalize, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -70,10 +70,12 @@ export class MarkService {
           this.response.accuracy = accuracy;
           this.response.marked = true;
         },
-        error: (response) => {
-          this.response.message = "Echec de lappel";
+        error: (error: HttpErrorResponse) => {          
+          this.response.message =
+            error.error?.message || `Erreur HTTP ${error.status}`;
           this.response.status = "error";
           this.response.marked = false;
+          this.emitResponse();
         },
       });
   }
