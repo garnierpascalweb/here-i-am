@@ -41,7 +41,7 @@ export class MarkComponent implements OnInit, OnDestroy {
     let geoLocOptions = {
       enabledHighAccruracy: true,
       maximumAge: 10000,
-      timeout: 3000,
+      timeout: 10000,
     };
     // calcul de la position
     if (navigator.geolocation) {
