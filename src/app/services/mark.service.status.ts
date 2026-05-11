@@ -1,7 +1,6 @@
-
 enum MarkServiceStatus {
-    ok = "ok",
-    error = "error",
-    warning = "warning",
-    default = "default"
+  ok = "ok",
+  error = "error",
+  warning = "warning",
+  default = "default",
 }

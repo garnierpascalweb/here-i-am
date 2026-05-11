@@ -1,21 +1,23 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { ShowService } from '../services/show.service';
-import { ShowServiceResponse } from '../services/show.service.response';
+import { HttpClient } from "@angular/common/http";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { environment } from "src/environments/environment";
+import { ShowService } from "../services/show.service";
+import { ShowServiceResponse } from "../services/show.service.response";
 
 @Component({
-  selector: 'app-show',
-  templateUrl: './show.component.html',
-  styleUrls: ['./show.component.scss']
+  selector: "app-show",
+  templateUrl: "./show.component.html",
+  styleUrls: ["./show.component.scss"],
 })
 export class ShowComponent implements OnInit, OnDestroy {
-
   response: ShowServiceResponse;
   responseSubscription: Subscription;
 
-  constructor(private readonly http: HttpClient, private readonly showService: ShowService) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly showService: ShowService,
+  ) {
     this.response = new ShowServiceResponse();
     this.responseSubscription = new Subscription();
   }
@@ -24,21 +26,25 @@ export class ShowComponent implements OnInit, OnDestroy {
     this.responseSubscription = this.showService.responseSubject.subscribe(
       (response: ShowServiceResponse) => {
         this.response = response;
-      }
+      },
     );
     this.showService.showPositions();
     this.showService.emitResponse();
     // 1.3.0: tracking sur le show
     if (environment.production) {
-      this.http.post(environment.endpoints.tracking, {}, {
-        params: { script: 'HereIAmShow' }
-      }
-      ).subscribe();
+      this.http
+        .post(
+          environment.endpoints.tracking,
+          {},
+          {
+            params: { script: "HereIAmShow" },
+          },
+        )
+        .subscribe();
     }
   }
 
   ngOnDestroy(): void {
     this.responseSubscription.unsubscribe();
   }
-
 }

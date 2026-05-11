@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FlagService {
-  private readonly basePath = 'assets/flags/';
-  constructor() { }
+  private readonly basePath = "assets/flags/";
+  constructor() {}
   /**
    * Retourne l'URL de l'icône de drapeau selon le code pays
    * @param codeCountry ex: "fr", "us", "de"

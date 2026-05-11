@@ -1,15 +1,13 @@
-import { DatePipe } from '@angular/common';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import * as mapboxgl from 'mapbox-gl';
-import { environment } from 'src/environments/environment';
-import { CustomDatePipe } from '../pipe/customdatepipe';
-
-
+import { DatePipe } from "@angular/common";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import * as mapboxgl from "mapbox-gl";
+import { environment } from "src/environments/environment";
+import { CustomDatePipe } from "../pipe/customdatepipe";
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  selector: "app-map",
+  templateUrl: "./map.component.html",
+  styleUrls: ["./map.component.scss"],
 })
 
 /**
@@ -19,12 +17,12 @@ import { CustomDatePipe } from '../pipe/customdatepipe';
  * @see https://medium.com/@timo.baehr/using-mapbox-in-angular-application-bc3b2b38592
  */
 export class MapComponent implements OnInit, OnChanges {
-  map: mapboxgl.Map;  
-  datepipe: DatePipe; 
+  map: mapboxgl.Map;
+  datepipe: DatePipe;
   @Input() points: any[];
 
-  constructor() {  
-    this.datepipe = new CustomDatePipe('en-US');
+  constructor() {
+    this.datepipe = new CustomDatePipe("en-US");
   }
 
   /**
@@ -33,23 +31,23 @@ export class MapComponent implements OnInit, OnChanges {
    * Simple initialisation de la map
    */
   ngOnInit() {
-    // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467 
-    (mapboxgl as any).accessToken = environment.mapBoxAccessToken;          
+    // why as any ? https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23467
+    (mapboxgl as any).accessToken = environment.mapBoxAccessToken;
     this.map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v12",
       zoom: 9,
-      center: [21.9270884, 64.1436456]
+      center: [21.9270884, 64.1436456],
     });
-    this.map.addControl(new mapboxgl.NavigationControl());         
+    this.map.addControl(new mapboxgl.NavigationControl());
   }
 
   /**
    * Methode permettant de detecter les changement des chanps @Input
    * @since 1.1.0
-   * @param changes 
+   * @param changes
    */
-  ngOnChanges(changes: any) {   
+  ngOnChanges(changes: any) {
     if (this.points) {
       const lastPoint = this.points[0];
       let center = new mapboxgl.LngLat(lastPoint.lng, lastPoint.lat);
@@ -59,7 +57,21 @@ export class MapComponent implements OnInit, OnChanges {
           let formattedDate = this.datepipe.transform(point.timepoint);
           const marker = new mapboxgl.Marker()
             .setLngLat([point.lng, point.lat])
-            .setPopup(new mapboxgl.Popup().setHTML("Le " + formattedDate + " sur la commune de " + point.codepostal + " " + point.commune + " (" + point.lat + " " + point.lng + ")"))
+            .setPopup(
+              new mapboxgl.Popup().setHTML(
+                "Le " +
+                  formattedDate +
+                  " sur la commune de " +
+                  point.codepostal +
+                  " " +
+                  point.commune +
+                  " (" +
+                  point.lat +
+                  " " +
+                  point.lng +
+                  ")",
+              ),
+            )
             .addTo(this.map);
         });
       }
