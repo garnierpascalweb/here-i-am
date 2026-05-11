@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FlagService } from '../services/flag.service';
 import { WeatherService } from '../services/weather.service';
 
@@ -13,20 +13,16 @@ import { WeatherService } from '../services/weather.service';
  * Sous composant de show
  * Permet d'afficher la liste des points sous forme de tableau
  */
-export class PointListComponent implements OnInit, OnDestroy {
+export class PointListComponent  {
   @Input() points: any[];
   
-  constructor(private flagService: FlagService, private weatherService : WeatherService) {
+  constructor(private readonly flagService: FlagService, private readonly weatherService : WeatherService) {
   
   }
 
-  ngOnInit(): void {
-   
-  }
+  
 
-  ngOnDestroy(): void {
-    
-  }
+  
 
   getIcon(code: number): string {
   return this.weatherService.getWeatherIcon(code);

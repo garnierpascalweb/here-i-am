@@ -11,10 +11,10 @@ import { MarkServiceResponse } from "./mark.service.response";
 @Injectable()
 export class MarkService {
 
-    private response: MarkServiceResponse;
+    private readonly response: MarkServiceResponse;
     responseSubject = new Subject<MarkServiceResponse>();
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private readonly httpClient: HttpClient) {
         this.response = new MarkServiceResponse();
     }
 
@@ -33,8 +33,7 @@ export class MarkService {
         // 1.2.0 envoi de l'altitude  
         let alt = position.coords.altitude;
         // 1.2.0 accuracy
-        let accuracy = Math.round(position.coords.accuracy);
-        // let datas = lat + ";" + lng;  
+        let accuracy = Math.round(position.coords.accuracy);        
         let datas: string;
         // alt peut etre null : verification prealable pour data     
         if (alt) {
@@ -55,9 +54,9 @@ export class MarkService {
                         () => {
                             this.response.message = ''
                             this.response.status = 'default';
-                            this.response.lat = 0.0;
-                            this.response.lng = 0.0;
-                            this.response.alt = 0.0;
+                            this.response.lat = 0;
+                            this.response.lng = 0;
+                            this.response.alt = 0;
                             this.response.marked = false;
                             this.emitResponse();
                         }, 5000

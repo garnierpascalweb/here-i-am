@@ -3,20 +3,13 @@
  */
 export class MarkServiceResponse {
     marked:boolean;
-    message:string;
-    status:string;
-    lat:number;
-    lng:number;
-    alt:number|null;
+    message:string = '';
+    status:string = '';
+    lat:number = 0;
+    lng:number = 0;
+    alt:number|null = 0;
     // 1.2.0
-    accuracy:number;
+    accuracy:number = 0;
 
-    constructor() {
-        this.message = '';
-        this.status = '';
-        this.lat = 0;
-        this.lng = 0;
-        this.alt = 0;          
-        this.accuracy = 0;
-    }
+    
 }

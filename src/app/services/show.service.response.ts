@@ -10,7 +10,5 @@ export class ShowServiceResponse {
    datas: any[];
    status:string;
 
-   constructor() {
-                
-   }
+   
 }

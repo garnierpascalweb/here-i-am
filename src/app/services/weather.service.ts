@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 export class WeatherService {
   constructor() {}
 
- private basePath = 'assets/weather/';
+ private readonly basePath = 'assets/weather/';
 
-  private iconMap: Record<number, string> = {
+  private readonly iconMap: Record<number, string> = {
     0: 'clear-day.svg',
 
     1: 'mostly-clear-day.svg',

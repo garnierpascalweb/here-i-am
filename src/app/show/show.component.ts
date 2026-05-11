@@ -15,7 +15,7 @@ export class ShowComponent implements OnInit, OnDestroy {
   response: ShowServiceResponse;
   responseSubscription: Subscription;
 
-  constructor(private http: HttpClient, private showService: ShowService) {
+  constructor(private readonly http: HttpClient, private readonly showService: ShowService) {
     this.response = new ShowServiceResponse();
     this.responseSubscription = new Subscription();
   }

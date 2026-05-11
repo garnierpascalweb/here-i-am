@@ -9,10 +9,10 @@ import { ConfigServiceResponse } from './config.service.response';
 })
 export class ConfigService {
 
-    private response: ConfigServiceResponse;
+    private readonly response: ConfigServiceResponse;
     responseSubject = new Subject<ConfigServiceResponse>();
 
-    constructor(private http: HttpClient) {
+    constructor(private readonly http: HttpClient) {
         this.response = new ConfigServiceResponse();
     }
 

@@ -14,11 +14,11 @@ import { ShowServiceResponse } from "./show.service.response";
 @Injectable()
 export class ShowService {
  
-    private response: ShowServiceResponse;  
+    private readonly response: ShowServiceResponse;  
     responseSubject = new Subject<ShowServiceResponse>();
     datepipe: DatePipe; 
     
-    constructor(private httpClient : HttpClient){
+    constructor(private readonly httpClient : HttpClient){
         this.response = new ShowServiceResponse();
         this.datepipe = new CustomDatePipe('en-US');
     }
@@ -33,7 +33,7 @@ export class ShowService {
      * @since 1.1.0
      * Rend l'ensemble des points dans response.datas (tableau) en mode reverse (plus recent en premier)
      * Rend aussi un message avec le dernier point (ca ne concerne que show et ne devrait pas etre ici)
-     * @todo a faire
+     * 
      */
     showPositions(){
         this.httpClient.get<any[]>(environment.endpoints.hereiam)
@@ -62,8 +62,7 @@ export class ShowService {
     }
 
     /**
-     * @since 1.1.0
-     * @todo 1.1.0 partir sur cette approche
+     * @since 1.1.0     
      * Inspiré de https://medium.com/egen/using-angular-httpclient-the-right-way-60c65146e5d9
      */
     getPoints(): Observable<MyPoint[] | null> {

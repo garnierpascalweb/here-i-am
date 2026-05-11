@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
@@ -13,7 +12,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
   response: ConfigServiceResponse;
   responseSubscription: Subscription;
 
-  constructor(private configService: ConfigService) {
+  constructor(private readonly configService: ConfigService) {
     this.response = new ConfigServiceResponse();
     this.responseSubscription = new Subscription();
   }

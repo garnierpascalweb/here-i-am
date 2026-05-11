@@ -13,7 +13,7 @@ export class MarkComponent implements OnInit, OnDestroy {
   response: MarkServiceResponse;  
   responseSubscription: Subscription;
 
-  constructor(private markService: MarkService) {
+  constructor(private readonly markService: MarkService) {
     this.response = new MarkServiceResponse();   
     this.responseSubscription = new Subscription();
   }
